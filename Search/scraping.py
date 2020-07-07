@@ -3,7 +3,7 @@ import requests
 from requests.compat import quote_plus
 from bs4 import BeautifulSoup
 
-
+# 07-07-20 12:43 listening to pop smokes album its pretty good.
 def walmart(request):
     search = request.POST.get('search')
     if search != '' and search is not None and search != 'None':
