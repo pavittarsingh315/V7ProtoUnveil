@@ -1,0 +1,25 @@
+{% extends 'Home/base.html' %}
+
+{% block content %}
+		<div class="divider container"></div>
+
+		<!-- Logout Notification -->
+		<section class="section container center">
+            <div class="row">
+                <div class="col s12 l10 m12 offset-l1">
+                    <div class="card-panel z-depth-2 hoverable">
+                        <h5 class="center registerformheader">Logout Successful</h5>
+                        <br>
+                        <div class="card-action">
+                            <ul>
+                                <div><a href="{% url 'loginpage' %}">Login Again</a></div>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+		<div class="divider container"></div>
+
+{% endblock content %}

@@ -1,0 +1,100 @@
+{% extends 'Home/base.html' %}
+{% block content %}
+		<div class="center error-message">
+			{% if form.errors %}
+				{% for field in form %}
+					{% for error in field.errors %}
+						<div class="center" style="background-color: red; color: white"> {{ error }} </div>
+					{% endfor %}
+				{% endfor %}
+			{% endif %}
+		</div>
+		<div class="divider container"></div>
+
+		<!-- Registration Form -->
+		<section class="section container center">
+            <div class="row">
+                <div class="col s12 l10 m12 offset-l1">
+                    <div class="card-panel z-depth-2 hoverable">
+                        <form method="POST">
+							{% csrf_token%}
+                            <h5 class="center registerformheader">Sign up!</h5>
+                            <div class="divider"></div>
+                            <br>
+
+							<div>
+
+								<div class="input-field">
+									<i class="material-icons prefix color-primary-scheme">sentiment_very_satisfied</i>
+									<input type="text" name="first_name" maxlength="30" required id="id_first_name">
+									<span class="tooltipped helptext" data-position="bottom" data-tooltip="Enter Your First Name">
+										<i class="material-icons color-secondary-scheme">info</i>
+									</span>
+									<label for="id_first_name">First name:</label>
+								</div>
+
+								<div class="input-field">
+									<i class="material-icons prefix color-primary-scheme">sentiment_very_satisfied</i>
+									<input type="text" name="last_name" maxlength="30" required id="id_last_name">
+									<span class="tooltipped helptext" data-position="bottom" data-tooltip="Enter Your Last Name">
+										<i class="material-icons color-secondary-scheme">info</i>
+									</span>
+									<label for="id_last_name">Last name:</label>
+								</div>
+
+
+								<div class="input-field">
+									<i class="material-icons prefix color-primary-scheme">email</i>
+									<input type="email" name="email" required id="id_email">
+									<span class="tooltipped helptext" data-position="bottom" data-tooltip="Enter a valid Email Address">
+										<i class="material-icons color-secondary-scheme">info</i>
+									</span>
+									<label for="id_email">Email:</label>
+								</div>
+
+
+                            	<div class="input-field">
+				    				<i class="material-icons prefix color-primary-scheme">account_box</i>
+				    				<input type="text" name="username" maxlength="150" autocapitalize="none" autocomplete="username" required id="id_username">
+				    				<span class="tooltipped helptext" data-position="bottom" data-tooltip="150 characters or fewer. Letters, digits and @/./+/-/_ only.">
+				    					<i class="material-icons color-secondary-scheme">info</i>
+				    				</span>
+				    				<label for="id_username">Username:</label>
+					        	</div>
+
+
+								<div class="input-field col s6 m6 l6">
+				    				<i class="material-icons prefix color-primary-scheme">lock</i>
+				    				<input type="password" name="password1" autocomplete="new-password" required id="id_password1">
+				    				<span class="tooltipped helptext" data-position="bottom" data-tooltip="<ul><li>Your password can’t be too similar to your other personal information.</li><li>Your password must contain at least 8 characters.</li><li>Your password can’t be a commonly used password.</li><li>Your password can’t be entirely numeric.</li></ul>">
+				    					<i class="material-icons color-secondary-scheme">info</i>
+				    				</span>
+				    				<label for="id_password1">Password:</label>
+					        	</div>
+
+
+								<div class="input-field col s6 m6 l6">
+				    				<i class="material-icons prefix color-primary-scheme">lock</i>
+				    				<input type="password" name="password2" autocomplete="new-password" required id="id_password2">
+				    				<span class="tooltipped helptext" data-position="bottom" data-tooltip="Enter the same password as before, for verification.">
+				    					<i class="material-icons color-secondary-scheme">info</i>
+				    				</span>
+				    				<label for="id_password2">Confirm Password:</label>
+					        	</div>
+							</div>
+
+
+							<div class="card-action">
+								<ul>
+									<li><button class="btn-flat white-text backcolor-secondary-scheme center waves-effect waves-dark" type="submit">Join</button></li><br>
+									<li>Already Have An Account?<a href="{% url 'loginpage' %}">  Login</a></li>
+								</ul>
+							</div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+		<div class="divider container"></div>
+{% endblock content %}
