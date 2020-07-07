@@ -1,0 +1,171 @@
+{% extends 'Home/base.html' %}
+{% load static %}
+{% block content %}
+
+        <div class="container">
+            <div class="row">
+                <div class="col s12 m3 l2"></div>
+                <div class="col s12 m6 l8">
+                    <h6 class="center container preloaderheader">Please wait while we gather your results</h6>
+                    <h6 class="center container preloaderrightsnotice">
+                        All rights of the product belong to the redirected seller.
+                    </h6>
+                    <div class="prodiv">
+                        <div class="proind"></div>
+                    </div>
+                </div>
+                <div class="col s12 m3 l2"></div>
+            </div>
+        </div>
+
+        <div class="section section-icons promos">
+            <div class="row">
+                {% for tier2 in tier2s %}
+					<div class="col m6 s12 l3">
+						<div class="center card-panel z-depth-2 hoverable">
+							<i class=" large material-icons" style="color: {{ tier2.symbol_hex_color }}">{{ tier2.symbol }}</i>
+							<p>{{ tier2.header }}</p>
+							<p class="light center hide-on-small-only">{{ tier2.content }}</p>
+						</div>
+					</div>
+				{% endfor %}
+            </div>
+        </div>
+
+
+        <div class="mainsearchcontent">
+            <br>
+            <div class="divider container"></div>
+
+            <!-- Search Bar -->
+            <div>
+                <form class="container section white-text center" method="POST">
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="col s12">
+                            <div class="input-field">
+                                <i class="material-icons prefix color-primary-scheme">search</i>
+                                <input type="text" name="search" class="autocomplete z-depth-3" id="autocomplete-input">
+                                <button class="btn waves-effect waves-light backcolor-primary-scheme" type="submit" name="action">Search
+                                  <i class="material-icons right">search</i>
+                                </button>
+                                <label for="autocomplete-input">Search:</label>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div class="divider container"></div>
+            <br>
+
+            <h3 class="container light text-align: center">{{ search }}</h3>
+
+            <br><div class="container divider"></div>
+
+
+
+            <div class="row container">
+                {% for searchad in searchads %}
+                    <div class="col s12 m6 l4 shop-item">
+                        <div class="card hoverable  shop-item">
+                            <div class="card-image waves-effect waves-block waves-light">
+                                <img class="activator shop-item-image" src="{{ searchad.image_url }}">
+                            </div>
+                            <div class="card-content">
+                                <span class="card-title activator grey-text text-darken-4">{{ searchad.header }}</span>
+                                <span>${{ searchad.price }}</span>
+                                <button class="right btn-small btn-flat detail-card-tabs backcolor-primary-scheme"><b class="white-text">AD</b></button>
+                            </div>
+                            <div class="card-action">
+                                <a href="{{ searchad.redirect_url }}" target="_blank" class="btn-floating btn-large waves-effect waves-light backcolor-primary-scheme" title="Go to seller website"><i class="material-icons">input</i></a>
+                                <div class="right center seller">{{ searchad.seller }}</div>
+                                <!--
+                                <button class="btn-floating btn-large right waves-effect waves-light backcolor-secondary-scheme" title="Bookmark" onclick="M.toast({html: 'Bookmarked', classes: 'rounded'})"><i class="material-icons">bookmark</i></button>
+                            -->
+                            </div>
+                            {% if user.is_authenticated %}
+                                <div class="card-reveal">
+                                    <ul class="collapsible expandable">
+                                        <li>
+                                        <div class="collapsible-header"><i class="material-icons">info_outline</i>Description</div>
+                                        <div class="collapsible-body"><span>{{ searchad.description }}</span></div>
+                                        </li>
+                                        <li>
+                                    </ul>
+                                    <div class="card-action">
+                                        <ul class="center">
+                                            <li><a class="btn-flat waves-effect waves-light detail-card-tabs backcolor-primary-scheme"><b class="white-text card-title">Exit</b></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                {% endfor %}
+
+                {% for product in products %}
+                    <div class="col s12 m6 l4 shop-item">
+                        <div class="card hoverable">
+                            <div class="card-image waves-effect waves-block waves-light">
+                                <img class="activator shop-item-image" src="{{ product.Image }}">
+                            </div>
+                            <div class="card-content">
+                                <span class="shop-item-title card-title activator grey-text text-darken-4">{{ product.Name }}</span>
+                                <span class="shop-item-price">{{ product.Price }}</span>
+                                <button class="right btn-small btn-flat detail-card-tabs" style="background-color: #FE1520; font-size: 10px;"><b class="white-text">{{ product.Seller }}</b></button>
+                            </div>
+                            <div class="card-action">
+                                <button class="shop-item-button btn-floating btn-large waves-effect waves-light backcolor-primary-scheme" title="Add to Cart"><i class="material-icons">add_shopping_cart</i></button>
+
+
+                                <button data-product="{{ product.id }}" data-action="add" class="bookmark-btn btn-floating btn-large right waves-effect waves-light backcolor-secondary-scheme" title="Add Bookmark"><i class="material-icons">bookmark_outline</i></button>
+
+                            </div>
+                            {% if user.is_authenticated %}
+                                <div class="card-reveal">
+                                    <a target="_blank" href="{{ product.Link }}" class="center container link-title"></a>
+                                    <ul class="collapsible expandable">
+                                        <li>
+                                            <div class="collapsible-header"><i class="material-icons">info_outline</i>Description</div>
+                                            <div class="collapsible-body"><span>{{ product.Description }}</span></div>
+                                        </li>
+                                    </ul>
+                                    <div class="card-action">
+                                        <ul class="center">
+                                            <li><button class="btn-flat waves-effect waves-light detail-card-tabs backcolor-secondary-scheme"><b class="white-text card-title">Exit</b></button></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+
+            {% if products.has_other_pages %}
+              <ul class="pagination center">
+                {% if products.has_previous %}
+                    <li class="active-color waves-effect"><a href="?page=1"><i class="material-icons">subdirectory_arrow_left</i></a></li>
+                    <li class="active-color waves-effect"><a href="?page={{ products.previous_page_number }}"><i class="material-icons">chevron_left</i></a></li>
+                {% endif %}
+
+                {% for num in products.paginator.page_range %}
+                    {% if products.number == num %}
+                        <li class="active waves-effect" style="background-color: #f4b41a;"><a href="?page={{ num }}" style="color:white;">{{ num }}</a></li>
+                    {% elif num > products.number|add:'-3' and num < products.number|add:'3' %}
+                        <li class="active-color waves-effect"><a href="?page={{ num }}">{{ num }}</a></li>
+                    {% endif %}
+                {% endfor %}
+
+                {% if products.has_next %}
+                    <li class="active-color waves-effect"><a href="?page={{ products.next_page_number }}"><i class="material-icons">chevron_right</i></a></li>
+                    <li class="active-color waves-effect"><a href="?page={{ products.paginator.num_pages }}"><i class="material-icons">subdirectory_arrow_right</i></a></li>
+                {% endif %}
+              </ul>
+            {% endif %}
+
+
+        </div>
+        <script type="text/javascript" src="{% static 'javascript/preloader.js' %}"></script>
+{% endblock content %}

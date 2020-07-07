@@ -31,6 +31,7 @@ urlpatterns = [
 
     path('', include('Home.urls')),
     path('users/', include('Users.urls')),
+    path('search/', include('Search.urls'))
 ]
 
 if settings.DEBUG:

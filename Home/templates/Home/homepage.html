@@ -40,7 +40,7 @@
 
 		<!-- Search Bar -->
 		<div>
-            <form class="container section white-text center" method="POST">
+            <form class="container section white-text center" method="POST" action="{% url 'searchpage' %}">
 				{% csrf_token %}
         		<div class="row">
         			<div class="col s12 l10 m12 offset-l1">
