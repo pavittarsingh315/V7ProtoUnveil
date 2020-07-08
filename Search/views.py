@@ -4,7 +4,9 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from .scraping import walmart, hollister
 
 def search(request):
-    search = request.POST.get('Search')
+    search = request.POST.get('search')
+    user = request.user
+    models.Search.objects.create(Search_value=search, Search_User=user)
 
     walmart(request)
     hollister(request)

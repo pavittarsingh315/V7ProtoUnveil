@@ -1,0 +1,88 @@
+{% extends 'Home/base.html' %}
+{% block content %}
+    <!-- Search Bar -->
+    <div>
+        <form class="container section white-text center" method="GET">
+            {% csrf_token %}
+            <div class="row">
+                <div class="col s12 l10 m12 offset-l1">
+                    <div class="input-field">
+                        <i class="material-icons prefix color-primary-scheme">search</i>
+                        <input type="text" name="product_name" id="id_product_name">
+                        <button class="btn waves-effect waves-light backcolor-primary-scheme" type="submit" name="action">Search
+                          <i class="material-icons right">search</i>
+                        </button>
+                        <label for="id_product_name">Find a Bookmark:</label>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div class="divider container"></div>
+    <br>
+
+    <h3 class="container light text-align: center">{{ user.first_name }}'s Bookmarks</h3>
+
+    <br><div class="container divider"></div>
+
+    <div class="row container">
+        {% for bookmark in Bookmarks %}
+            <div class="col s12 m6 l4 shop-item">
+                <div class="card hoverable">
+                    <div class="card-image waves-effect waves-block waves-light">
+                        <img class="activator shop-item-image" src="{{ bookmark.product.Image }}">
+                    </div>
+                    <div class="card-content">
+                        <span class="shop-item-title card-title activator grey-text text-darken-4">{{ bookmark.product.Name }}</span>
+                        <span class="shop-item-price">{{ bookmark.product.Price }}</span>
+                        <button class="right btn-small btn-flat detail-card-tabs" style="background-color: #FE1520; font-size: 10px;"><b class="white-text">{{ bookmark.product.Seller }}</b></button>
+                    </div>
+                    <div class="card-action">
+                        <button class="shop-item-button btn-floating btn-large waves-effect waves-light backcolor-primary-scheme" title="Add to Cart"><i class="material-icons">add_shopping_cart</i></button>
+
+
+                        <button data-product="{{ bookmark.product.id }}" data-action="remove" class="bookmark-btn btn-floating btn-large right waves-effect waves-light backcolor-secondary-scheme" title="Remove Bookmark"><i class="material-icons">bookmark</i></button>
+
+                    </div>
+                    <div class="card-reveal">
+                        <a target="_blank" href="{{ bookmark.product.Link }}" class="center container link-title"></a>
+                        <ul class="collapsible expandable">
+                            <li>
+                                <div class="collapsible-header"><i class="material-icons">info_outline</i>Description</div>
+                                <div class="collapsible-body"><span>{{ bookmark.product.Description }}</span></div>
+                            </li>
+                        </ul>
+                        <div class="card-action">
+                            <ul class="center">
+                                <li><a href="#!" class="btn-flat waves-effect waves-light detail-card-tabs backcolor-secondary-scheme"><b class="white-text card-title">Exit</b></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+    {% if Bookmarks.has_other_pages %}
+      <ul class="pagination center">
+        {% if Bookmarks.has_previous %}
+            <li class="active-color waves-effect"><a href="?page=1"><i class="material-icons">subdirectory_arrow_left</i></a></li>
+            <li class="active-color waves-effect"><a href="?page={{ Bookmarks.previous_page_number }}"><i class="material-icons">chevron_left</i></a></li>
+        {% endif %}
+
+        {% for num in Bookmarks.paginator.page_range %}
+            {% if Bookmarks.number == num %}
+                <li class="active-color waves-effect" style="background-color: #f4b41a;"><a href="?page={{ num }}" style="color:white;">{{ num }}</a></li>
+            {% elif num > Bookmarks.number|add:'-3' and num < Bookmarks.number|add:'3' %}
+                <li class="active-color waves-effect"><a href="?page={{ num }}">{{ num }}</a></li>
+            {% endif %}
+        {% endfor %}
+
+        {% if Bookmarks.has_next %}
+            <li class="active-color waves-effect"><a href="?page={{ Bookmarks.next_page_number }}"><i class="material-icons">chevron_right</i></a></li>
+            <li class="active-color waves-effect"><a href="?page={{ Bookmarks.paginator.num_pages }}"><i class="material-icons">subdirectory_arrow_right</i></a></li>
+        {% endif %}
+      </ul>
+    {% endif %}
+{% endblock content %}

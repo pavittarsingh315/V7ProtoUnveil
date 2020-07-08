@@ -62,7 +62,7 @@
                     <ul id="dropdown1" class="dropdown-content backcolor-primary-scheme">
                         <li><a href="{% url 'profilepage' %}" class="white-text">Profile</a></li>
                         <li><a href="#" class="white-text">Settings</a></li>
-                        <li><a href="#" class="white-text">Bookmarks</a></li>
+                        <li><a href="{% url 'bookmarks' %}" class="white-text">Bookmarks</a></li>
                         <li class="divider backcolor-secondary-scheme"></li>
                         <li><a href="{% url 'logoutpage' %}" class="white-text">Logout</a></li>
                     </ul>
@@ -88,7 +88,7 @@
             <ul id="dropdown2" class="dropdown-content">
                 <li><a href="{% url 'profilepage' %}" class="">Profile</a></li>
                 <li><a href="#">Settings</a></li>
-                <li><a href="#">Bookmarks</a></li>
+                <li><a href="{% url 'bookmarks' %}">Bookmarks</a></li>
                 <li class="divider"></li>
                 <li><a href="{% url 'logoutpage' %}">Logout</a></li>
             </ul>

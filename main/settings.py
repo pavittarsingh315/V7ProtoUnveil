@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'Search.apps.SearchConfig',
 
     'django_cleanup.apps.CleanupConfig',
+    'django_filters',
 ]
 
 MIDDLEWARE = [
