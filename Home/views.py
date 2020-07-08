@@ -4,6 +4,12 @@ from django.http import JsonResponse
 import json
 from .filters import BookmarkFilter
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+
+
+def Error_404_custom(request, exception):
+    return render(request, 'Home/404.html')
+
+
 def home(request):
     return render(request, 'Home/homepage.html')
 
