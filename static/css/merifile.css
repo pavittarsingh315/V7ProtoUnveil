@@ -1,0 +1,234 @@
+:root {
+	--primary-color-scheme: #142e54;
+	--secondary-color-scheme: #f4b41a;
+}
+
+
+/* This allows the footer to remain at the bottom of page even with no content but it goes down with more content */
+
+body {
+	display: flex;
+	min-height: 100vh;
+	flex-direction: column;
+}
+
+main {
+	flex: 1 0 auto;
+}
+
+
+/* seller */
+
+.seller {
+	margin-top: 17px;
+}
+
+
+/* this keeps all the cards on a consistent height it is good. */
+
+.card {
+	height: 375px;
+	overflow: hidden;
+}
+
+.card-image {
+	height: 175px;
+}
+
+
+/* this limits the amount of characters in the title */
+
+.card-title {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	max-width: 300px;
+}
+
+
+/* Main Color Scheme*/
+
+.color-primary-scheme {
+	color: var(--primary-color-scheme);
+}
+
+.backcolor-primary-scheme {
+	background-color: var(--primary-color-scheme);
+}
+
+.backcolor-primary-scheme:visited {
+	background-color: var(--primary-color-scheme);
+}
+
+.backcolor-primary-scheme:hover {
+	background-color: var(--primary-color-scheme);
+}
+
+.backcolor-primary-scheme:active {
+	background-color: var(--primary-color-scheme);
+}
+
+.backcolor-primary-scheme:focus {
+	background-color: var(--primary-color-scheme);
+}
+
+.color-secondary-scheme {
+	color: var(--secondary-color-scheme);
+}
+
+.backcolor-secondary-scheme {
+	background-color: var(--secondary-color-scheme);
+}
+
+.backcolor-secondary-scheme:visited {
+	background-color: var(--secondary-color-scheme);
+}
+
+.backcolor-secondary-scheme:hover {
+	background-color: var(--secondary-color-scheme);
+}
+
+.backcolor-secondary-scheme:active {
+	background-color: var(--secondary-color-scheme);
+}
+
+.backcolor-secondary-scheme:focus {
+	background-color: var(--secondary-color-scheme);
+}
+
+
+/* Pagination */
+
+.active-color:visited {
+	background-color: var(--secondary-color-scheme);
+}
+
+.active-color:hover {
+	background-color: var(--secondary-color-scheme);
+}
+
+.active-color:active {
+	background-color: var(--secondary-color-scheme);
+}
+
+.active-color:focus {
+	background-color: var(--secondary-color-scheme);
+}
+
+
+/* Detail Card
+
+.card-tab-headers{
+ font-family: sans-serif;
+}
+
+.registerformheader {
+ color: black;
+ font-family: verdana;
+}
+
+.tabs .tab a:focus.active {
+ color:#000000;
+ Custom Text Color While Active
+ background-color: rgba(20, 61, 89, .69);
+ /*Custom Background Color While Active
+}
+
+.tabs .indicator {
+ background-color:#f4b41a;
+ /*Custom Color Of Indicator
+} */
+
+
+/*.tabs .tab a {
+ color:#000000;
+ Custom Text Color
+}
+
+.tabs .tab a:hover {
+ color:#143d59;
+ Custom Color On Hover
+}*/
+
+
+/* registration form */
+
+.row .input-field input:focus {
+	border-bottom: 1px solid var(--secondary-color-scheme) !important;
+	box-shadow: 0 1px 0 0 var(--secondary-color-scheme) !important
+}
+
+
+/* Search Bar */
+
+.section-search input {
+	padding: 5px !important;
+	font-size: 18px !important;
+	width: 90% !important;
+	border: #143d59 1px solid !important;
+}
+
+
+/* Preloader */
+
+.progress {
+	background-color: var(--primary-color-scheme);
+}
+
+.progress .indeterminate {
+	background-color: var(--secondary-color-scheme);
+}
+
+.preloaderheader {
+	margin-top: 5%;
+	margin-bottom: 3%;
+}
+
+
+/* Autocomplete style*/
+
+.section-search input.autocomplete {
+	color: #000;
+}
+
+.input-field .prefix.active {
+	color: var(--secondary-color-scheme)!important;
+}
+
+.dropdown-content li>span {
+	color: var(--secondary-color-scheme)!important;
+	background-color: var(--primary-color-scheme);
+}
+
+.autocomplete-content li .highlight {
+	color: white!important;
+}
+
+
+/* Google Fonts */
+
+
+/* fallback */
+
+@font-face {
+	font-family: 'Material Icons';
+	font-style: normal;
+	font-weight: 400;
+	src: url(https://fonts.gstatic.com/s/materialicons/v50/flUhRq6tzZclQEJ-Vdg-IuiaDsNc.woff2) format('woff2');
+}
+
+.material-icons {
+	font-family: 'Material Icons';
+	font-weight: normal;
+	font-style: normal;
+	font-size: 24px;
+	line-height: 1;
+	letter-spacing: normal;
+	text-transform: none;
+	display: inline-block;
+	white-space: nowrap;
+	word-wrap: normal;
+	direction: ltr;
+	-webkit-font-feature-settings: 'liga';
+	-webkit-font-smoothing: antialiased;
+}
