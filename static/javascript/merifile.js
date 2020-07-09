@@ -194,7 +194,7 @@ function addItemToCart(title, price, imageSrc, itemLink){
 		<div class="cart-price">${price}</div>
 		<div title="Go to the product page."><a href="${itemLink}" target="_blank"><i class="material-icons">launch</i></a></div>
 		<div class="btn-danger">
-			<button class="secondary-content waves-effect waves-light btn-floating backcolor-scheme-yellow"><i class="small material-icons" title="Delete Item">delete</i></button>
+			<button class="secondary-content waves-effect waves-light btn-floating backcolor-secondary-scheme"><i class="small material-icons" title="Delete Item">delete</i></button>
 		</div>`
 	cartRow.innerHTML = cartRowContents
 	cartItems.append(cartRow)
@@ -238,7 +238,7 @@ function displayCart() {
 				<div class="cart-price">${item.price}</div>
 				<div title="Go to the product page."><a href="${item.itemLink}" target="_blank"><i class="material-icons">launch</i></a></div>
                 <div class="btn-danger">
-					<button onclick="reloadDelete(event)" class="secondary-content waves-effect waves-light btn-floating backcolor-scheme-yellow"><i class="small material-icons" title="Delete Item">delete</i></button>
+					<button onclick="reloadDelete(event)" class="secondary-content waves-effect waves-light btn-floating backcolor-secondary-scheme"><i class="small material-icons" title="Delete Item">delete</i></button>
                 </div>
             </div>`
         });

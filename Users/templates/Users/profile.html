@@ -16,7 +16,9 @@
 						  		<div>Email: {{ user.email }}</div>
 								<div class="center">
 									<div class="center container">Recent Searches:</div>
-
+									{% for recent in recents %}
+										<div class="center container">{{ recent.Search_value }}</div>
+									{% endfor %}
 								</div>
 							</div>
 				        </div>
