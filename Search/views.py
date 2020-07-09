@@ -28,5 +28,6 @@ def search(request):
         'Search': search,
         'products': Products,
     }
+    # 07/8/20 11:56 pm
     return render(request, 'Search/search.html', stuff_for_frontend)
 
