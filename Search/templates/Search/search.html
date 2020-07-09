@@ -108,12 +108,12 @@
                     <div class="col s12 m6 l4 shop-item">
                         <div class="card hoverable">
                             <div class="card-image waves-effect waves-block waves-light">
-                                <img class="activator shop-item-image" src="{{ product.Image }}">
+                                <img class="activator shop-item-image" src="{{ product.5 }}">
                             </div>
                             <div class="card-content">
-                                <span class="shop-item-title card-title activator grey-text text-darken-4">{{ product.Name }}</span>
-                                <span class="shop-item-price">{{ product.Price }}</span>
-                                <button class="right btn-small btn-flat detail-card-tabs" style="background-color: #FE1520; font-size: 10px;"><b class="white-text">{{ product.Seller }}</b></button>
+                                <span class="shop-item-title card-title activator grey-text text-darken-4">{{ product.0 }}</span>
+                                <span class="shop-item-price">{{ product.1 }}</span>
+                                <button class="right btn-small btn-flat detail-card-tabs" style="background-color: #FE1520; font-size: 10px;"><b class="white-text">{{ product.4 }}</b></button>
                             </div>
                             <div class="card-action">
                                 <button class="shop-item-button btn-floating btn-large waves-effect waves-light backcolor-primary-scheme" title="Add to Cart"><i class="material-icons">add_shopping_cart</i></button>
@@ -124,11 +124,11 @@
                             </div>
                             {% if user.is_authenticated %}
                                 <div class="card-reveal">
-                                    <a target="_blank" href="{{ product.Link }}" class="center container link-title"></a>
+                                    <a target="_blank" href="{{ product.3 }}" class="center container link-title"></a>
                                     <ul class="collapsible expandable">
                                         <li>
                                             <div class="collapsible-header"><i class="material-icons">info_outline</i>Description</div>
-                                            <div class="collapsible-body"><span>{{ product.Description }}</span></div>
+                                            <div class="collapsible-body"><span>{{ product.2 }}</span></div>
                                         </li>
                                     </ul>
                                     <div class="card-action">

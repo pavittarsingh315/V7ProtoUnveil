@@ -1,17 +1,19 @@
 from django.shortcuts import render
 from . import models
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from .scraping import walmart, hollister
+from .scraping import final_product, walmart, hollister
+
+final_product = final_product
 
 def search(request):
     search = request.POST.get('search')
-    user = request.user
-    models.Search.objects.create(Search_value=search, Search_User=user)
+
 
     walmart(request)
     hollister(request)
 
-    product_list = models.Product.objects.get_queryset().order_by('Name')
+
+    product_list = sorted(final_product)
     page = request.GET.get('page', 1)
 
     paginator = Paginator(product_list, 12)

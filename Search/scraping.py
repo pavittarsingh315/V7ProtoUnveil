@@ -4,9 +4,16 @@ from requests.compat import quote_plus
 from bs4 import BeautifulSoup
 
 # 07-07-20 12:43 a.m listening to pop smokes album its pretty good.
+
+final_product = []
+
 def walmart(request):
     search = request.POST.get('search')
     if search != '' and search is not None and search != 'None':
+        # better to leave search model creation here bc pagination wont create a None
+        user = request.user
+        models.Search.objects.create(Search_value=search, Search_User=user)
+
         headers = {
             'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36'
         }
@@ -40,13 +47,7 @@ def walmart(request):
                     image = ('https:' + soup.find('img', alt=f'{name}').get('src'))
                     seller = 'Walmart'
 
-                    if models.Product.objects.filter(Name=name, Link=link, Seller=seller):
-                        if models.Product.objects.filter(Name=name, Price=price, Description=description, Link=link, Image=image):
-                            continue
-                        else:
-                            models.Product.objects.filter(Name=name, Link=link).update(Name=name, Price=price, Description=description, Link=link, Image=image, Seller=seller)
-                    else:
-                        models.Product.objects.update_or_create(Name=name, Price=price, Description=description, Link=link, Image=image, Seller=seller)
+                    final_product.append((name, price, description, link, seller, image))
 
 
 def hollister(request):
@@ -82,10 +83,4 @@ def hollister(request):
                 link = link
                 seller = 'Hollister'
 
-                if models.Product.objects.filter(Name=name, Link=link):
-                    if models.Product.objects.filter(Name=name, Price=price, Description=description, Link=link, Image=image, Seller=seller):
-                        continue
-                    else:
-                        models.Product.objects.filter(Name=name, Link=link).update(Name=name, Price=price, Description=description, Link=link, Image=image, Seller=seller)
-                else:
-                    models.Product.objects.update_or_create(Name=name, Price=price, Description=description, Link=link, Image=image, Seller=seller)
+                final_product.append((name, price, description, link, seller, image))
