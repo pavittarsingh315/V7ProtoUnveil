@@ -7,6 +7,10 @@ from bs4 import BeautifulSoup
 def walmart(request):
     search = request.POST.get('search')
     if search != '' and search is not None and search != 'None':
+        # leave this here bc it stops the annoying None search when going to diff pages using pagination
+        user = request.user
+        models.Search.objects.create(Search_value=search, Search_User=user)
+
         headers = {
             'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36'
         }
