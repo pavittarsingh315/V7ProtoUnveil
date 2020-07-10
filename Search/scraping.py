@@ -11,6 +11,7 @@ def walmart(request):
     search = request.POST.get('search')
     if search != '' and search is not None and search != 'None':
         # better to leave search model creation here bc pagination wont create a None
+        # leave this here bc it stops the annoying None search when going to diff pages using pagination
         user = request.user
         models.Search.objects.create(Search_value=search, Search_User=user)
 

@@ -5,7 +5,7 @@ from Search.models import Product
 
 
 class Bookmark(models.Model):
-    User = models.ForeignKey(SiteUser, on_delete=models.SET_NULL, null=True, blank=True)
+    User = models.OneToOneField(SiteUser, on_delete=models.CASCADE)
     date_created = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
@@ -14,7 +14,6 @@ class Bookmark(models.Model):
 
 
 class BookmarkItem(models.Model):
-    product = models.ForeignKey(Product, on_delete=models.SET_NULL, null=True)
     product_name = models.CharField(max_length=200, default=None, null=True, blank=True)
     Bookmark = models.ForeignKey(Bookmark, on_delete=models.SET_NULL, null=True)
     Bookmark_Owner = models.ForeignKey(SiteUser, on_delete=models.CASCADE, null=True, blank=True)

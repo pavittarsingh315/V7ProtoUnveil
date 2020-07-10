@@ -8,7 +8,6 @@ final_product = final_product
 def search(request):
     search = request.POST.get('search')
 
-
     walmart(request)
     hollister(request)
 
