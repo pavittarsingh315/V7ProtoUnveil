@@ -24,9 +24,9 @@ def UpdateItem(request):
     bookmark, created = models.Bookmark.objects.get_or_create(User=user)
 
     if action == 'add':
-        models.BookmarkItem.objects.get_or_create(Bookmark=bookmark, product=product, Bookmark_Owner=user, product_name=product)
+        models.BookmarkItem.objects.get_or_create(Bookmark=bookmark, Bookmark_Owner=user, product_name=product)
     elif action == 'remove':
-        models.BookmarkItem.objects.filter(Bookmark=bookmark, product=product, Bookmark_Owner=user).delete()
+        models.BookmarkItem.objects.filter(Bookmark=bookmark, product_name=product, Bookmark_Owner=user).delete()
 
     return JsonResponse('Item was added!', safe=False)
 
