@@ -1,9 +1,7 @@
 from django.shortcuts import render
 from . import models
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from .scraping import final_product, walmart, hollister
-
-final_product = final_product
+from .scraping import walmart, hollister
 
 def search(request):
     search = request.POST.get('search')
@@ -11,8 +9,7 @@ def search(request):
     walmart(request)
     hollister(request)
 
-
-    product_list = sorted(final_product)
+    product_list = models.Product.objects.get_queryset().order_by('Name')
     page = request.GET.get('page', 1)
 
     paginator = Paginator(product_list, 12)
@@ -27,6 +24,5 @@ def search(request):
         'Search': search,
         'products': Products,
     }
-    # 07/8/20 11:56 pm
     return render(request, 'Search/search.html', stuff_for_frontend)
 
