@@ -6,10 +6,13 @@ from .scraping import walmart, hollister
 def search(request):
     search = request.POST.get('search')
 
-    walmart(request)
-    hollister(request)
+    if models.Product.objects.filter(Search=search):
+        product_list = models.Product.objects.filter(Search=search).all().order_by('Name')
+    else:
+        walmart(request)
+        hollister(request)
+        product_list = models.Product.objects.filter(Search=search).all().order_by('Name')
 
-    product_list = models.Product.objects.get_queryset().order_by('Name')
     page = request.GET.get('page', 1)
 
     paginator = Paginator(product_list, 12)

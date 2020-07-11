@@ -45,12 +45,12 @@ def walmart(request):
                     seller = 'Walmart'
 
                     if models.Product.objects.filter(Name=name, Link=link, Seller=seller):
-                        if models.Product.objects.filter(Name=name, Price=price, Description=description, Link=link, Image=image):
+                        if models.Product.objects.filter(Search=search, Name=name, Price=price, Description=description, Link=link, Image=image):
                             continue
                         else:
-                            models.Product.objects.filter(Name=name, Link=link).update(Name=name, Price=price, Description=description, Link=link, Image=image, Seller=seller)
+                            models.Product.objects.filter(Search=search, Name=name, Link=link).update(Search=search, Name=name, Price=price, Description=description, Link=link, Image=image, Seller=seller)
                     else:
-                        models.Product.objects.update_or_create(Name=name, Price=price, Description=description, Link=link, Image=image, Seller=seller)
+                        models.Product.objects.update_or_create(Search=search, Name=name, Price=price, Description=description, Link=link, Image=image, Seller=seller)
 
 
 def hollister(request):
@@ -86,10 +86,10 @@ def hollister(request):
                 link = link
                 seller = 'Hollister'
 
-                if models.Product.objects.filter(Name=name, Link=link):
-                    if models.Product.objects.filter(Name=name, Price=price, Description=description, Link=link, Image=image, Seller=seller):
+                if models.Product.objects.filter(Name=name, Link=link, Seller=seller):
+                    if models.Product.objects.filter(Search=search, Name=name, Price=price, Description=description, Link=link, Image=image, Seller=seller):
                         continue
                     else:
-                        models.Product.objects.filter(Name=name, Link=link).update(Name=name, Price=price, Description=description, Link=link, Image=image, Seller=seller)
+                        models.Product.objects.filter(Search=search, Name=name, Link=link).update(Search=search, Name=name, Price=price, Description=description, Link=link, Image=image, Seller=seller)
                 else:
-                    models.Product.objects.update_or_create(Name=name, Price=price, Description=description, Link=link, Image=image, Seller=seller)
+                    models.Product.objects.update_or_create(Search=search,  Name=name, Price=price, Description=description, Link=link, Image=image, Seller=seller)

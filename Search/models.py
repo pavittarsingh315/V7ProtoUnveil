@@ -16,6 +16,7 @@ class Search(models.Model):
 
 
 class Product(models.Model):
+    Search = models.CharField(max_length=100, null=True, blank=True)
     Name = models.CharField(max_length=100, null=True, blank=True)
     Price = models.CharField(max_length=10, null=True, blank=True)
     Description = models.TextField(null=True, blank=True)

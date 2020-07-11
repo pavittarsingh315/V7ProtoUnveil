@@ -9,7 +9,7 @@ class SearchAdmin(admin.ModelAdmin):
 admin.site.register(Search, SearchAdmin)
 
 class ProductAdmin(admin.ModelAdmin):
-    list_display = ('Name', 'Price', 'Seller')
+    list_display = ('Name', 'Price', 'Search', 'Seller')
     search_fields = ('Name', 'Seller')
 
 admin.site.register(Product, ProductAdmin)
