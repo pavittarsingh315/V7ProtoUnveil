@@ -59,4 +59,28 @@
 
 		<div class="divider container"></div>
 
+
+		<div class="section section-icons container">
+	        <div class="row">
+				{% for tier1 in tier1s %}
+					<div class="col s12 m6 l4">
+					<div class="card hoverable">
+						<div class="card-image waves-effect waves-block waves-light">
+							<img class="activator" src="{{ tier1.image_url }}">
+						</div>
+						<div class="card-content">
+							<a href="{{ tier1.redirect_url }}" target="_blank" class="card-title activator">{{ tier1.header }}</a>
+							<span>{{ tier1.front_content }}</span>
+						</div>
+						<div class="card-reveal">
+							<span class="card-title grey-text text-darken-4">{{ tier1.header }}<i class="material-icons right">close</i></span>
+							<div class="divider"></div><br>
+							<div class="center">{{ tier1.hidden_content }}</div>
+						</div>
+					</div>
+				</div>
+				{% endfor %}
+	        </div>
+        </div>
+
 {% endblock content %}

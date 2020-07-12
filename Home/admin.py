@@ -1,6 +1,10 @@
 from django.contrib import admin
 from .models import *
 
+admin.site.site_header = "UnveilSale Admin"
+admin.site.site_title = "UnveilSale Administration"
+admin.site.index_title = "UnveilSale Administration Page"
+
 
 class BookmarkModel(admin.ModelAdmin):
     list_display = ('User', 'date_created')

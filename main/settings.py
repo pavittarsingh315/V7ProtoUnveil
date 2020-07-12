@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'Home.apps.HomeConfig',
     'Users.apps.UsersConfig',
     'Search.apps.SearchConfig',
+    'Advertisements.apps.AdvertisementsConfig',
 
     'django_cleanup.apps.CleanupConfig',
     'django_filters',

@@ -2,6 +2,7 @@ from django.shortcuts import render
 from . import models
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from .scraping import walmart, hollister, searchcreateobject
+from Advertisements import models as Ad_models
 
 def search(request):
     search = request.POST.get('search')
@@ -29,6 +30,8 @@ def search(request):
     stuff_for_frontend = {
         'Search': search,
         'products': product_list,
+        'tier2s': Ad_models.Tier2.objects.all(),
+        'searchads': Ad_models.SearchPageAds.objects.all(),
     }
     return render(request, 'Search/search.html', stuff_for_frontend)
 

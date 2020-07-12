@@ -4,6 +4,7 @@ from django.http import JsonResponse
 import json
 from .filters import BookmarkFilter
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from Advertisements import models as Ad_models
 
 
 def Error_404_custom(request, exception):
@@ -11,7 +12,10 @@ def Error_404_custom(request, exception):
 
 
 def home(request):
-    return render(request, 'Home/homepage.html')
+    context = {
+        'tier1s': Ad_models.Tier1.objects.all()
+    }
+    return render(request, 'Home/homepage.html', context)
 
 
 def UpdateItem(request):
