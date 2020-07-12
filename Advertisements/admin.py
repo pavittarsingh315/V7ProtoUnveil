@@ -1,6 +1,7 @@
 from django.contrib import admin
 from .models import *
 
+# 07-12-20 Im too good
 
 class AdvertisementTier1(admin.ModelAdmin):
     list_display = ('company', 'payment', 'header', 'date_created')
