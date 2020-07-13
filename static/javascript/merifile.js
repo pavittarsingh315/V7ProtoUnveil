@@ -192,7 +192,7 @@ function addItemToCart(title, price, imageSrc, itemLink){
 		    <span class="title cart-item-title">${title}</span>
 		</div>
 		<div class="cart-price">${price}</div>
-		<div title="Go to the product page."><a href="${itemLink}" target="_blank"><i class="material-icons">launch</i></a></div>
+		<a title="Go to the product page." class="btn btn-small waves-effect waves-light" style="background-color: #FE1520;" href="${itemLink}" target="_blank"><i class="large material-icons white-text">input</i></a>
 		<div class="btn-danger">
 			<button class="secondary-content waves-effect waves-light btn-floating backcolor-secondary-scheme"><i class="small material-icons" title="Delete Item">delete</i></button>
 		</div>`
@@ -236,7 +236,7 @@ function displayCart() {
                     <span class="title cart-item-title">${item.name}</span>
                 </div>
 				<div class="cart-price">${item.price}</div>
-				<div title="Go to the product page."><a href="${item.itemLink}" target="_blank"><i class="material-icons">launch</i></a></div>
+				<a title="Go to the product page." class="btn btn-small waves-effect waves-light" style="background-color: #FE1520;" href="${item.itemLink}" target="_blank"><i class="material-icons white-text">input</i></a>
                 <div class="btn-danger">
 					<button onclick="reloadDelete(event)" class="secondary-content waves-effect waves-light btn-floating backcolor-secondary-scheme"><i class="small material-icons" title="Delete Item">delete</i></button>
                 </div>

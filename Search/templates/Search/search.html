@@ -75,11 +75,11 @@
                             <div class="card-content">
                                 <span class="card-title activator grey-text text-darken-4">{{ searchad.header }}</span>
                                 <span>${{ searchad.price }}</span>
-                                <button class="right btn-small btn-flat detail-card-tabs backcolor-primary-scheme"><b class="white-text">AD</b></button>
+                                <button class="right btn-small btn-flat detail-card-tabs backcolor-secondary-scheme" style="font-size: 10px;"><b class="white-text">{{ searchad.seller }}</b></button>
                             </div>
                             <div class="card-action">
                                 <a href="{{ searchad.redirect_url }}" target="_blank" class="btn-floating btn-large waves-effect waves-light backcolor-primary-scheme" title="Go to seller website"><i class="material-icons">input</i></a>
-                                <div class="right center seller">{{ searchad.seller }}</div>
+                                <button class="btn-floating btn-large waves-effect waves-light backcolor-secondary-scheme right"><b class="white-text">AD</b></button>
                                 <!--
                                 <button class="btn-floating btn-large right waves-effect waves-light backcolor-secondary-scheme" title="Bookmark" onclick="M.toast({html: 'Bookmarked', classes: 'rounded'})"><i class="material-icons">bookmark</i></button>
                             -->
