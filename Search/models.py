@@ -11,6 +11,13 @@ class Search(models.Model):
     def __str__(self):
         return '{}'.format(self.Search_value)
 
+    def save(self, *args, **kwargs):
+        for field_name in ['Search_value']:
+            val = getattr(self, field_name, False)
+            if val:
+                setattr(self, field_name, val.capitalize())
+        super(Search, self).save(*args, **kwargs)
+
     class Meta:
         verbose_name_plural = "Searches"
 

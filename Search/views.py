@@ -4,8 +4,9 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from .scraping import walmart, hollister, searchcreateobject
 from Advertisements import models as Ad_models
 
+
 def search(request):
-    search = request.POST.get('search')
+    search = request.POST.get('search').capitalize()
 
     if models.Product.objects.filter(Search=search):
         product_list = models.Product.objects.filter(Search=search).all().order_by('Name')

@@ -70,16 +70,16 @@
                     <div class="col s12 m6 l4 shop-item">
                         <div class="card hoverable  shop-item">
                             <div class="card-image waves-effect waves-block waves-light">
-                                <img class="activator shop-item-image" src="{{ searchad.image_url }}">
+                                <img class="activator shop-item-image" src="{{ searchad.Image }}">
                             </div>
                             <div class="card-content">
-                                <span class="card-title activator grey-text text-darken-4">{{ searchad.header }}</span>
-                                <span>${{ searchad.price }}</span>
-                                <button class="right btn-small btn-flat detail-card-tabs backcolor-secondary-scheme" style="font-size: 10px;"><b class="white-text">{{ searchad.seller }}</b></button>
+                                <span class="card-title activator grey-text text-darken-4">{{ searchad.Name }}</span>
+                                <span>${{ searchad.Price }}</span>
+                                <button class="right btn-small btn-flat detail-card-tabs backcolor-secondary-scheme" style="font-size: 10px;"><b class="white-text">{{ searchad.Seller }}</b></button>
                             </div>
                             <div class="card-action">
-                                <a href="{{ searchad.redirect_url }}" target="_blank" class="btn-floating btn-large waves-effect waves-light backcolor-primary-scheme" title="Go to seller website"><i class="material-icons">input</i></a>
-                                <button class="btn-floating btn-large waves-effect waves-light backcolor-secondary-scheme right"><b class="white-text">AD</b></button>
+                                <a href="{{ searchad.Link }}" target="_blank" class="btn-floating btn-large waves-effect waves-light backcolor-primary-scheme" title="Go to seller website"><i class="material-icons">input</i></a>
+                                <button class="btn-floating btn-large backcolor-secondary-scheme right"><b class="white-text">AD</b></button>
                                 <!--
                                 <button class="btn-floating btn-large right waves-effect waves-light backcolor-secondary-scheme" title="Bookmark" onclick="M.toast({html: 'Bookmarked', classes: 'rounded'})"><i class="material-icons">bookmark</i></button>
                             -->
@@ -89,7 +89,7 @@
                                     <ul class="collapsible expandable">
                                         <li>
                                         <div class="collapsible-header"><i class="material-icons">info_outline</i>Description</div>
-                                        <div class="collapsible-body"><span>{{ searchad.description }}</span></div>
+                                        <div class="collapsible-body"><span>{{ searchad.Description }}</span></div>
                                         </li>
                                         <li>
                                     </ul>

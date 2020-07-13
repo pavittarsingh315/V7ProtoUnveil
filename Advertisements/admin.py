@@ -28,11 +28,11 @@ admin.site.register(Tier2, AdvertisementTier2)
 
 
 class LoadedSearchPage(admin.ModelAdmin):
-    list_display = ('company', 'seller', 'payment', 'header', 'date_created')
-    search_fields = ('company', 'seller', 'header', 'price')
+    list_display = ('company', 'Seller', 'payment', 'Name', 'date_created')
+    search_fields = ('company', 'Seller', 'Name', 'Price')
     fieldsets = (
         ('Private', {'fields': ('company', 'payment',)}),
-        ('Content', {'fields': ('seller', 'header', 'image_url', 'redirect_url', 'price', 'description')}),
+        ('Content', {'fields': ('Seller', 'Name', 'Image', 'Link', 'Price', 'Description')}),
         ('General', {'fields': ('date_created',)})
     )
 

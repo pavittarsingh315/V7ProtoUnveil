@@ -39,12 +39,12 @@ class Tier2(models.Model):
 class SearchPageAds(models.Model):
     company = models.CharField(max_length=100)
     payment = models.DecimalField(max_digits=20, decimal_places=2, default=None)
-    header = models.CharField(max_length=100)
-    seller = models.CharField(max_length=100)
-    redirect_url = models.CharField(max_length=200, default=None)
-    image_url = models.CharField(max_length=200, default=None)
-    price = models.DecimalField(max_digits=20, decimal_places=2, default=None)
-    description = models.TextField()
+    Name = models.CharField(max_length=100)
+    Seller = models.CharField(max_length=100)
+    Link = models.CharField(max_length=200, default=None)
+    Image = models.CharField(max_length=200, default=None)
+    Price = models.DecimalField(max_digits=20, decimal_places=2, default=None)
+    Description = models.TextField()
     date_created = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
