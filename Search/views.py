@@ -3,20 +3,27 @@ from . import models
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from .scraping import walmart, hollister, searchcreateobject
 from Advertisements import models as Ad_models
-
+from itertools import chain
+from operator import attrgetter
 
 def search(request):
     search = request.POST.get('search').capitalize()
 
     if models.Product.objects.filter(Search=search):
-        product_list = models.Product.objects.filter(Search=search).all().order_by('Name')
         searchcreateobject(request)
+
+        product_list = models.Product.objects.filter(Search=search).all().order_by('Name')
+        # ads = Ad_models.SearchPageAds.objects.filter(Name=search).all()
+        # product_list = sorted(chain(products, ads), key=attrgetter('Name'))
     else:
         searchcreateobject(request)
+
         walmart(request)
         hollister(request)
 
         product_list = models.Product.objects.filter(Search=search).all().order_by('Name')
+        # ads = Ad_models.SearchPageAds.objects.filter(Name=search).all()
+        # product_list = sorted(chain(products, ads), key=attrgetter('Name'))
 
     # page = request.GET.get('page', 1)
     #
@@ -32,7 +39,7 @@ def search(request):
         'Search': search,
         'products': product_list,
         'tier2s': Ad_models.Tier2.objects.all(),
-        'searchads': Ad_models.SearchPageAds.objects.all(),
+        'searchads': Ad_models.SearchPageAds.objects.filter(Name=search).all(),
     }
     return render(request, 'Search/search.html', stuff_for_frontend)
 
