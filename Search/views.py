@@ -13,7 +13,7 @@ def search(request):
         searchcreateobject(request)
 
         product_list = models.Product.objects.filter(Search=search).all().order_by('Name')
-        # ads = Ad_models.SearchPageAds.objects.filter(Name=search).all()
+        # ads = Ad_models.SearchPageAds.objects.filter(Keywords=search).all()
         # product_list = sorted(chain(products, ads), key=attrgetter('Name'))
     else:
         searchcreateobject(request)
@@ -22,7 +22,7 @@ def search(request):
         hollister(request)
 
         product_list = models.Product.objects.filter(Search=search).all().order_by('Name')
-        # ads = Ad_models.SearchPageAds.objects.filter(Name=search).all()
+        # ads = Ad_models.SearchPageAds.objects.filter(Keywords=search).all()
         # product_list = sorted(chain(products, ads), key=attrgetter('Name'))
 
     # page = request.GET.get('page', 1)
