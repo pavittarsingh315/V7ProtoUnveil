@@ -38,8 +38,8 @@ def search(request):
     stuff_for_frontend = {
         'Search': search,
         'products': product_list,
-        'tier2s': Ad_models.Tier2.objects.all(),
-        'searchads': Ad_models.SearchPageAds.objects.filter(Name=search).all(),
+        'tier2s': Ad_models.Tier2.objects.filter(Keywords=search).all(),
+        'searchads': Ad_models.SearchPageAds.objects.filter(Keywords=search).all(),
     }
     return render(request, 'Search/search.html', stuff_for_frontend)
 

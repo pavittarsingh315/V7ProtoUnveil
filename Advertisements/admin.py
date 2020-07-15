@@ -20,7 +20,7 @@ class AdvertisementTier2(admin.ModelAdmin):
     search_fields = ('company', 'header',)
     fieldsets = (
         ('Private', {'fields': ('company', 'payment',)}),
-        ('Content', {'fields': ('symbol', 'symbol_hex_color', 'header', 'content')}),
+        ('Content', {'fields': ('symbol', 'Keywords', 'symbol_hex_color', 'header', 'content')}),
         ('General', {'fields': ('date_created',)})
     )
 
@@ -32,7 +32,7 @@ class LoadedSearchPage(admin.ModelAdmin):
     search_fields = ('company', 'Seller', 'Name', 'Price')
     fieldsets = (
         ('Private', {'fields': ('company', 'payment',)}),
-        ('Content', {'fields': ('Seller', 'Name', 'Image', 'Link', 'Price', 'Description')}),
+        ('Content', {'fields': ('Seller', 'Name', 'Keywords', 'Image', 'Link', 'Price', 'Description')}),
         ('General', {'fields': ('date_created',)})
     )
 
