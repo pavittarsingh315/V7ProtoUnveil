@@ -84,7 +84,10 @@ def hollister(request):
 
             if soup2.find('h1', class_=['product-title-component', 'product-title-main-header']):
                 name = soup2.find('h1', class_=['product-title-component', 'product-title-main-header']).text.strip()
-                price = soup2.find('span', class_=['product-price-text', 'product-price-font-size']).text
+                if soup2.find_all('span', class_=['product-price-text', 'product-price-font-size'])[1]:
+                    price = soup2.find_all('span', class_=['product-price-text', 'product-price-font-size'])[1].text
+                else:
+                    price = soup2.find('span', class_=['product-price-text', 'product-price-font-size']).text
                 description = 'N/A'
                 image = soup.find('img', alt=f'{name}').get('src')
                 link = link
