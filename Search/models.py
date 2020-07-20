@@ -5,6 +5,7 @@ from django.utils import timezone
 class Search(models.Model):
     Search_value = models.CharField(max_length=100, null=True)
     Search_User = models.CharField(max_length=200, default=None, null=True, blank=True)
+    Frequency = models.IntegerField(null=True, blank=True)
     date_added = models.DateTimeField(default=timezone.now)
 
 

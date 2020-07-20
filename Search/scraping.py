@@ -2,14 +2,18 @@ from . import models
 import requests
 from requests.compat import quote_plus
 from bs4 import BeautifulSoup
+from django.db.models import F
 
 # 07-07-20 12:43 a.m listening to pop smokes album its pretty good.
 def searchcreateobject(request):
-    search = request.POST.get('search')
+    search = request.POST.get('search').capitalize()
+    user = request.user
     if search != '' and search is not None and search != 'None':
         # leave this here bc it stops the annoying None search when going to diff pages using pagination
-        user = request.user
-        models.Search.objects.create(Search_value=search, Search_User=user)
+        if models.Search.objects.filter(Search_value=search, Search_User=user):
+            models.Search.objects.filter(Search_value=search, Search_User=user).update(Frequency=F('Frequency')+1)
+        else:
+            models.Search.objects.create(Search_value=search, Search_User=user, Frequency=1)
 
 
 def walmart(request):

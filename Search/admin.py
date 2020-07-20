@@ -3,7 +3,7 @@ from .models import *
 
 
 class SearchAdmin(admin.ModelAdmin):
-    list_display = ('Search_User', 'Search_value', 'date_added')
+    list_display = ('Search_User', 'Search_value', 'Frequency', 'date_added')
     search_fields = ('Search_User', 'Search_value')
 
 admin.site.register(Search, SearchAdmin)
