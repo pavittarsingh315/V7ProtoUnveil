@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from . import models
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from .scraping import walmart, hollister, searchcreateobject
+from .scraping import *
 from Advertisements import models as Ad_models
 from itertools import chain
 from operator import attrgetter
@@ -18,8 +18,12 @@ def search(request):
     else:
         searchcreateobject(request)
 
-        walmart(request)
-        hollister(request)
+        Walmart(request)
+        Hollister(request)
+        Abercrombie(request)
+        CostCo(request)
+        HomeDepot(request)
+        SamsClub(request)
 
         product_list = models.Product.objects.filter(Search=search).all().order_by('Name')
         # ads = Ad_models.SearchPageAds.objects.filter(Keywords=search).all()
