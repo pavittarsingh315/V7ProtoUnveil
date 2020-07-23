@@ -5,6 +5,7 @@ import json
 from .filters import BookmarkFilter
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from Advertisements import models as Ad_models
+from Search import models as Search_models
 
 
 def Error_404_custom(request, exception):
@@ -12,6 +13,8 @@ def Error_404_custom(request, exception):
 
 
 def home(request):
+    order_qs = Search_models.Search.objects.order_by('-Frequency')[:10]
+    print(order_qs)
     context = {
         'tier1s': Ad_models.Tier1.objects.all()
     }
