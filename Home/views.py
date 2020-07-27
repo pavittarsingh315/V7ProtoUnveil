@@ -14,9 +14,9 @@ def Error_404_custom(request, exception):
 
 def home(request):
     order_qs = Search_models.Search.objects.order_by('-Frequency')[:10]
-    print(order_qs)
     context = {
-        'tier1s': Ad_models.Tier1.objects.all()
+        'tier1s': Ad_models.Tier1.objects.all(),
+        'topten': order_qs,
     }
     return render(request, 'Home/homepage.html', context)
 
