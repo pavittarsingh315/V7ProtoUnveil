@@ -27,7 +27,7 @@ def search(request):
 
         product_list = models.Product.objects.filter(Search=search).all().order_by('Name')
         # ads = Ad_models.SearchPageAds.objects.filter(Keywords=search).all()
-        # product_list = sorted(chain(products, ads), key=attrgetter('Name'))
+        # product_list = sorted(chain(products, ads), key=attrgetter('Name')) eating hajmola
 
     # page = request.GET.get('page', 1)
     #
