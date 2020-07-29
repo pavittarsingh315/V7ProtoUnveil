@@ -2,9 +2,15 @@ from django.contrib import admin
 from .models import *
 
 
-class SearchAdmin(admin.ModelAdmin):
+class UserSearchAdmin(admin.ModelAdmin):
     list_display = ('Search_User', 'Search_value', 'Frequency', 'date_added')
     search_fields = ('Search_User', 'Search_value')
+
+admin.site.register(User_Search, UserSearchAdmin)
+
+class SearchAdmin(admin.ModelAdmin):
+    list_display = ('Search_value', 'Frequency', 'date_added')
+    search_fields = ('Search_value',)
 
 admin.site.register(Search, SearchAdmin)
 

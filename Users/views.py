@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from .forms import UserRegisterForm
-from Search.models import Search
+from Search.models import Search, User_Search
 
 # these are all the imports for user email verification
 from django.http import HttpResponse
@@ -60,7 +60,7 @@ def activate(request, uidb64, token):
 
 def profile(request):
     user = request.user
-    recent_searches = Search.objects.filter(Search_User=user).order_by('-date_added')[:10]
+    recent_searches = User_Search.objects.filter(Search_User=user).order_by('-date_added')[:10]
 
     context = {
         'recents': recent_searches,
