@@ -13,11 +13,11 @@
 	<div id="trending" class="modal modal-trending modal-fixed-footer">
 		<div class="modal-content">
 			<span class="header center"><h3 class="cart-total-price">Popular Searches</h3></span>
-			<div class="collection cart-items">
+			<div class="collection">
 				{% for topten in topten %}
-					<div class='collection-item avatar cart-row'>
+					<div class='collection-item avatar'>
 						<div>
-							<h5 class="center container left card-title">{{ topten.Search_value }}</h5>
+							<h5 class="center container left card-title">{{ forloop.counter }}. {{ topten.Search_value }}</h5>
 						</div>
 					</div>
 				{% endfor %}
