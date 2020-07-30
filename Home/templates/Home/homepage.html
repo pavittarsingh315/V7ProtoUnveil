@@ -31,86 +31,97 @@
 
 
 {% block content %}
-        <!-- Slider -->
-		<div class="slider">
-			<ul class="slides">
-		      <li>
-		        <img src="{% static 'images/balloon.jpg' %}"> <!-- random image -->
-		        <div class="caption center-align">
-		          <h3>Welcome to UnveilSale!!</h3>
-		          <h5 class="light grey-text text-lighten-3 hide-on-small-only">Where finding the best deal and saving money has never been made easier!</h5>
-		        </div>
-		      </li>
-		      <li>
-		        <img src="{% static 'images/fire.jpg' %}"> <!-- random image -->
-		        <div class="caption center-align">
-		          <h3>Left Aligned Caption</h3>
-		          <h5 class="light grey-text text-lighten-3 hide-on-small-only">Here's our small slogan.</h5>
-		        </div>
-		      </li>
-		      <li>
-		        <img src="{% static 'images/lion.jpg' %}"> <!-- random image -->
-		        <div class="caption center-align">
-		          <h3>Right Aligned Caption</h3>
-		          <h5 class="light grey-text text-lighten-3 hide-on-small-only">Here's our small slogan.</h5>
-		        </div>
-		      </li>
-		      <li>
-		        <img src="{% static 'images/ocean.jpg' %}"> <!-- random image -->
-		        <div class="caption center-align">
-		          <h3>This is our big Tagline!</h3>
-		          <h5 class="light grey-text text-lighten-3 hide-on-small-only">Here's our small slogan.</h5>
-		        </div>
-		      </li>
-		    </ul>
+		<div id='homepreloaderid' class="container">
+
+        </div>
+
+		<div class="donations">
+			FUCK YOU FAGGIT!
 		</div>
 
-		<br>
-		<div class="divider container"></div>
+		<div class="mainhomecontent">
 
-		<!-- Search Bar -->
-		<div>
-            <form class="container section white-text center" method="POST" action="{% url 'searchpage' %}">
-				{% csrf_token %}
-        		<div class="row">
-        			<div class="col s12 l10 m12 offset-l1">
-		                <div class="input-field">
-							<i class="material-icons prefix color-primary-scheme">search</i>
-		                    <input type="text" name="search" class="autocomplete z-depth-3" id="autocomplete-input">
-		                    <button class="btn waves-effect waves-light backcolor-primary-scheme" type="submit" name="action">Search
-		                      <i class="material-icons right">search</i>
-		                    </button>
-							<label for="autocomplete-input">Search:</label>
-		                </div>
-	                </div>
-                </div>
-            </form>
-        </div>
+			<!-- Slider -->
+			<div class="slider">
+				<ul class="slides">
+				  <li>
+					<img src="{% static 'images/balloon.jpg' %}"> <!-- random image -->
+					<div class="caption center-align">
+					  <h3>Welcome to UnveilSale!!</h3>
+					  <h5 class="light grey-text text-lighten-3 hide-on-small-only">Where finding the best deal and saving money has never been made easier!</h5>
+					</div>
+				  </li>
+				  <li>
+					<img src="{% static 'images/fire.jpg' %}"> <!-- random image -->
+					<div class="caption center-align">
+					  <h3>Left Aligned Caption</h3>
+					  <h5 class="light grey-text text-lighten-3 hide-on-small-only">Here's our small slogan.</h5>
+					</div>
+				  </li>
+				  <li>
+					<img src="{% static 'images/lion.jpg' %}"> <!-- random image -->
+					<div class="caption center-align">
+					  <h3>Right Aligned Caption</h3>
+					  <h5 class="light grey-text text-lighten-3 hide-on-small-only">Here's our small slogan.</h5>
+					</div>
+				  </li>
+				  <li>
+					<img src="{% static 'images/ocean.jpg' %}"> <!-- random image -->
+					<div class="caption center-align">
+					  <h3>This is our big Tagline!</h3>
+					  <h5 class="light grey-text text-lighten-3 hide-on-small-only">Here's our small slogan.</h5>
+					</div>
+				  </li>
+				</ul>
+			</div>
 
-		<div class="divider container"></div>
+			<br>
+			<div class="divider container"></div>
 
-
-		<div class="section section-icons container">
-	        <div class="row">
-				{% for tier1 in tier1s %}
-					<div class="col s12 m6 l4">
-					<div class="card hoverable">
-						<div class="card-image waves-effect waves-block waves-light">
-							<img class="activator" src="{{ tier1.image_url }}">
-						</div>
-						<div class="card-content">
-							<a href="{{ tier1.redirect_url }}" target="_blank" class="card-title activator">{{ tier1.header }}</a>
-							<span>{{ tier1.front_content }}</span>
-						</div>
-						<div class="card-reveal">
-							<span class="card-title grey-text text-darken-4">{{ tier1.header }}<i class="material-icons right">close</i></span>
-							<div class="divider"></div><br>
-							<div class="center">{{ tier1.hidden_content }}</div>
+			<!-- Search Bar -->
+			<div>
+				<form class="container section white-text center" method="POST" action="{% url 'searchpage' %}">
+					{% csrf_token %}
+					<div class="row">
+						<div class="col s12 l10 m12 offset-l1">
+							<div class="input-field">
+								<i class="material-icons prefix color-primary-scheme">search</i>
+								<input type="text" name="search" class="autocomplete z-depth-3" id="autocomplete-input">
+								<button onclick="searchpreloader()" class="btn waves-effect waves-light backcolor-primary-scheme" type="submit" name="action">Search
+								  <i class="material-icons right">search</i>
+								</button>
+								<label for="autocomplete-input">Search:</label>
+							</div>
 						</div>
 					</div>
-				</div>
-				{% endfor %}
-	        </div>
-        </div>
+				</form>
+			</div>
 
+			<div class="divider container"></div>
+
+
+			<div class="section section-icons container">
+				<div class="row">
+					{% for tier1 in tier1s %}
+						<div class="col s12 m6 l4">
+						<div class="card hoverable">
+							<div class="card-image waves-effect waves-block waves-light">
+								<img class="activator" src="{{ tier1.image_url }}">
+							</div>
+							<div class="card-content">
+								<a href="{{ tier1.redirect_url }}" target="_blank" class="card-title activator">{{ tier1.header }}</a>
+								<span>{{ tier1.front_content }}</span>
+							</div>
+							<div class="card-reveal">
+								<span class="card-title grey-text text-darken-4">{{ tier1.header }}<i class="material-icons right">close</i></span>
+								<div class="divider"></div><br>
+								<div class="center">{{ tier1.hidden_content }}</div>
+							</div>
+						</div>
+					</div>
+					{% endfor %}
+				</div>
+			</div>
+
+		</div>
 {% endblock content %}
