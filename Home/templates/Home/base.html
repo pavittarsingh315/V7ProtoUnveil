@@ -5,6 +5,7 @@
 	<meta charset="utf-8">
 	<link rel="stylesheet" type="text/css" href="{% static 'css/minimum.css' %}">
 	<link rel="stylesheet" type="text/css" href="{% static 'css/merifile.css' %}">
+    {% block header %} {% endblock header %}
 
 
 <!--  if you wanna get rid of favicon just delete these 4 links and delete the favicon file in static/images  -->
@@ -64,6 +65,7 @@
                         <li><a href="{% url 'profilepage' %}" class="white-text">Profile</a></li>
                         <li><a href="#" class="white-text">Settings</a></li>
                         <li><a href="{% url 'bookmarks' %}" class="white-text">Bookmarks</a></li>
+                        <li><a href="{% url 'donations' %}" class="white-text">Donate</a></li>
                         <li class="divider backcolor-secondary-scheme"></li>
                         <li><a href="{% url 'logoutpage' %}" class="white-text">Logout</a></li>
                     </ul>
@@ -91,6 +93,7 @@
                 <li><a href="{% url 'profilepage' %}" class="">Profile</a></li>
                 <li><a href="#">Settings</a></li>
                 <li><a href="{% url 'bookmarks' %}">Bookmarks</a></li>
+                <li><a href="{% url 'donations' %}">Donate</a></li>
                 <li class="divider"></li>
                 <li><a href="{% url 'logoutpage' %}">Logout</a></li>
             </ul>
@@ -184,6 +187,7 @@
 	<script type="text/javascript" src="{% static 'javascript/merifileTWO.js' %}"></script>
     <script type="text/javascript" src="{% static 'javascript/bookmark.js' %}"></script>
     <script type="text/javascript" src="{% static 'javascript/homepreloader.js' %}"></script>
+    {% block scripts %} {% endblock scripts %}
 </body>
 </html>
 

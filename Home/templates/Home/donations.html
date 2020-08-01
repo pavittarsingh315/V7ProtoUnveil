@@ -1,0 +1,90 @@
+{% extends 'Home/base.html' %}
+{% load static %}
+
+{% block header %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/stripe.css' %}">
+{% endblock header %}
+
+{% block content %}
+
+    <script src="https://js.stripe.com/v3/"></script>
+
+
+    <section class="section container center">
+        <div class="row">
+            <div class="col s12 l10 m12 offset-l1">
+                <div class="card-panel">
+<!--                    <script src="https://js.stripe.com/v3/"></script>-->
+
+                    <form action="{% url 'donationcharge' %}" method="post" id="payment-form">
+                        {% csrf_token %}
+
+                        <!-- <select required name="amount" id="amount">
+                            <option selected value="5">$5</option>
+                            <option value="10">$10</option>
+                            <option value="25">$25</option>
+                        </select> -->
+
+                        <!-- <input required type="text" name="email" placeholder="Email...">
+                        <input required type="text" name="nickname" placeholder="Nickname"> -->
+
+                        <div class="input-field">
+                            <i class="material-icons prefix color-primary-scheme">attach_money</i>
+                            <input type="text" name="amount" required id="amount">
+                            <span class="tooltipped helptext" data-position="top" data-tooltip="
+                            <ul>
+                            <li>Enter the amount you would like to donate.</li>
+                            <li>Donation example: By entering 17.47 you are donating 17.47 USD.</li>
+                            <li>Please keep in mind that donations will not be refunded.</li>
+                            </ul>">
+                                <i class="material-icons color-secondary-scheme">info</i>
+                            </span>
+                            <label for="amount">Amount:</label>
+                        </div>
+
+                        <div class="input-field col s6 m6 l6">
+                            <i class="material-icons prefix color-primary-scheme">sentiment_very_satisfied</i>
+                            <input type="text" name="name" maxlength="50" required id="id_first_name">
+                            <span class="tooltipped helptext" data-position="top" data-tooltip="Enter Full Name">
+                                <i class="material-icons color-secondary-scheme">info</i>
+                            </span>
+                            <label for="id_first_name">Full Name:</label>
+                        </div>
+
+
+                        <div class="input-field col s6 m6 l6">
+                            <i class="material-icons prefix color-primary-scheme">email</i>
+                            <input type="email" name="email" required id="id_email">
+                            <span class="tooltipped helptext" data-position="top" data-tooltip="Enter a valid Email Address">
+                                <i class="material-icons color-secondary-scheme">info</i>
+                            </span>
+                            <label for="id_email">Email:</label>
+                        </div>
+
+
+    <!--                    <div class="form-row">-->
+    <!--                        <label for="card-element">-->
+    <!--                        Credit or debit card-->
+    <!--                        </label>-->
+    <!--                        <div id="card-element">-->
+    <!--                        &lt;!&ndash; A Stripe Element will be inserted here. &ndash;&gt;-->
+    <!--                        </div>-->
+
+    <!--                        &lt;!&ndash; Used to display form errors. &ndash;&gt;-->
+    <!--                        <div id="card-errors" role="alert"></div>-->
+    <!--                    </div>-->
+
+                        <br>
+
+                        <button class="btn-flat white-text backcolor-secondary-scheme center waves-effect waves-dark" type="submit">Donate</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock content %}
+
+{% block scripts %}
+    <script type="text/javascript" src="{% static 'javascript/stripe.js' %}"></script>
+{% endblock scripts %}

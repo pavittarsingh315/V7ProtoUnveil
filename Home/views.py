@@ -1,4 +1,5 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.urls import reverse
 from . import models
 from django.http import JsonResponse
 import json
@@ -19,6 +20,35 @@ def home(request):
         'topten': order_qs,
     }
     return render(request, 'Home/homepage.html', context)
+
+
+def donations(request):
+    return render(request, 'Home/donations.html')
+
+def charge(request):
+    if request.method == 'POST':
+        print('Data:', request.POST)
+
+        amount = int(request.POST['amount'])
+
+        # customer = stripe.Customer.create(
+        #     email=request.POST['email'],
+        #     name=request.POST['nickname'],
+        #     source=request.POST['stripeToken'],
+        # )
+        #
+        # charge = stripe.Charge.create(
+        #     customer=customer,
+        #     amount=amount*100,
+        #     currency='usd',
+        #     description='Donation'
+        # )
+
+    return redirect(reverse('donationsuccess', args=[amount]))
+
+def successMsg(request, args):
+    amount = args
+    return render(request, 'Home/donationsuccess.html', {'amount': amount})
 
 
 def UpdateItem(request):
