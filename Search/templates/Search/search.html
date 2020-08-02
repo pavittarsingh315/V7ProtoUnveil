@@ -2,6 +2,7 @@
 {% load static %}
 {% block content %}
 
+
         <div class="container">
             <div class="row">
                 <div class="col s12 m3 l2"></div>
@@ -46,7 +47,7 @@
                             <div class="input-field">
                                 <i class="material-icons prefix color-primary-scheme">search</i>
                                 <input type="text" name="search" class="autocomplete z-depth-3" id="autocomplete-input">
-                                <button class="btn waves-effect waves-light backcolor-primary-scheme" type="submit" name="action">Search
+                                <button onclick="searchpreloader()" class="btn waves-effect waves-light backcolor-primary-scheme" type="submit" name="action">Search
                                   <i class="material-icons right">search</i>
                                 </button>
                                 <label for="autocomplete-input">Search:</label>
@@ -167,5 +168,8 @@
 
 
         </div>
-        <script type="text/javascript" src="{% static 'javascript/preloader.js' %}"></script>
 {% endblock content %}
+
+{% block scripts %}
+    <script type="text/javascript" src="{% static 'javascript/preloader.js' %}"></script>
+{% endblock scripts %}

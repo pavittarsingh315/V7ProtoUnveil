@@ -32,11 +32,9 @@
 
 {% block content %}
 		<div id='homepreloaderid' class="container">
-
         </div>
 
-		<div class="donations">
-			FUCK YOU FAGGIT!
+		<div id="donations">
 		</div>
 
 		<div class="mainhomecontent">
@@ -87,7 +85,7 @@
 							<div class="input-field">
 								<i class="material-icons prefix color-primary-scheme">search</i>
 								<input type="text" name="search" class="autocomplete z-depth-3" id="autocomplete-input">
-								<button onclick="searchpreloader()" class="btn waves-effect waves-light backcolor-primary-scheme" type="submit" name="action">Search
+								<button onclick="homepreloader()" class="btn waves-effect waves-light backcolor-primary-scheme" type="submit" name="action">Search
 								  <i class="material-icons right">search</i>
 								</button>
 								<label for="autocomplete-input">Search:</label>
@@ -125,3 +123,7 @@
 
 		</div>
 {% endblock content %}
+
+{% block scripts %}
+	<script type="text/javascript" src="{% static 'javascript/homepreloader.js' %}"></script>
+{% endblock scripts %}

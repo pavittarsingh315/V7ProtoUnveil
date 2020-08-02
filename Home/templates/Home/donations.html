@@ -14,32 +14,27 @@
         <div class="row">
             <div class="col s12 l10 m12 offset-l1">
                 <div class="card-panel">
-<!--                    <script src="https://js.stripe.com/v3/"></script>-->
+                    <script src="https://js.stripe.com/v3/"></script>
 
                     <form action="{% url 'donationcharge' %}" method="post" id="payment-form">
                         {% csrf_token %}
-
-                        <!-- <select required name="amount" id="amount">
-                            <option selected value="5">$5</option>
-                            <option value="10">$10</option>
-                            <option value="25">$25</option>
-                        </select> -->
-
-                        <!-- <input required type="text" name="email" placeholder="Email...">
-                        <input required type="text" name="nickname" placeholder="Nickname"> -->
 
                         <div class="input-field">
                             <i class="material-icons prefix color-primary-scheme">attach_money</i>
                             <input type="text" name="amount" required id="amount">
                             <span class="tooltipped helptext" data-position="top" data-tooltip="
                             <ul>
-                            <li>Enter the amount you would like to donate.</li>
-                            <li>Donation example: By entering 17.47 you are donating 17.47 USD.</li>
-                            <li>Please keep in mind that donations will not be refunded.</li>
+                            <li>1.   Enter the amount you would like to donate.</li>
+                            <li>2.   We only accept whole number donations at the moment!</li>
+                            <li>3.   Any decimal donation made will be round up or down accordingly.</li>
+                            <li>4.49 will be rounded to 4.</li>
+                            <li>4.51 will be rounded to 5.</li>
+                            <li>4.   Donation example: By entering 5 you are donating 5 USD.</li>
+                            <li>5.   Please keep in mind that donations will not be refunded.</li>
                             </ul>">
                                 <i class="material-icons color-secondary-scheme">info</i>
                             </span>
-                            <label for="amount">Amount:</label>
+                            <label for="amount">Amount: (Please hover above the "i" below to read disclaimers before you donate!)</label>
                         </div>
 
                         <div class="input-field col s6 m6 l6">
@@ -62,17 +57,17 @@
                         </div>
 
 
-    <!--                    <div class="form-row">-->
-    <!--                        <label for="card-element">-->
-    <!--                        Credit or debit card-->
-    <!--                        </label>-->
-    <!--                        <div id="card-element">-->
-    <!--                        &lt;!&ndash; A Stripe Element will be inserted here. &ndash;&gt;-->
-    <!--                        </div>-->
+                        <div class="form-row">
+                            <label for="card-element">
+                            Credit or debit card
+                            </label>
+                            <div id="card-element">
+                            <!-- A Stripe Element will be inserted here. -->
+                            </div>
 
-    <!--                        &lt;!&ndash; Used to display form errors. &ndash;&gt;-->
-    <!--                        <div id="card-errors" role="alert"></div>-->
-    <!--                    </div>-->
+                            <!-- Used to display form errors. -->
+                            <div id="card-errors" role="alert"></div>
+                        </div>
 
                         <br>
 

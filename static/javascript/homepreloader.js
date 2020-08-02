@@ -6,11 +6,11 @@ if (document.readyState == 'loading') {
 
 function ready() {
 // place the donation request here when some searches a redirect to donates shows up do the thing below
-	document.querySelector('.donations').style.display='none';
+	document.getElementById('donations').style.display='none';
 	console.log('Hello World')
 }
 
-function searchpreloader() {
+function homepreloader() {
     document.getElementById("homepreloaderid").innerHTML =
     `<div class="row">
         <div class="col s12 m3 l2"></div>
@@ -25,11 +25,18 @@ function searchpreloader() {
         </div>
         <div class="col s12 m3 l2"></div>
     </div>`;
+
+    document.getElementById("donations").innerHTML =
+    `<div class="row">
+        <div class="center container">Fuck You Faggit</div>
+    </div>`;
+
+
     document.querySelector('.mainhomecontent').style.display='none';
     document.querySelector('.prodiv').classList.add('progress');
     document.querySelector('.proind').classList.add('indeterminate');
     document.querySelector('.preloaderheader').style.display='block';
-    document.querySelector('.donations').style.display='block';
+    document.getElementById('donations').style.display='block';
     document.querySelector('.preloaderrightsnotice').style.display='block';
     setTimeout(function(){ document.querySelector('.prodiv').classList.remove('progress');
     document.querySelector('.proind').classList.remove('indeterminate');
@@ -38,3 +45,5 @@ function searchpreloader() {
     document.querySelector('.preloaderheader').style.display='none';
     },30000);
 }
+
+
