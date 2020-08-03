@@ -34,8 +34,23 @@
 		<div id='homepreloaderid' class="container">
         </div>
 
-		<div id="donations">
-		</div>
+		<div id="donations" class='donations container row'>
+            <div class="col m12 s12 l8 offset-l2">
+                <!-- Promo 2 -->
+                <div class="center card-panel z-depth-2 hoverable donation-card">
+                    <i class="large material-icons color-secondary-scheme">attach_money</i>
+                    <h5>Support UnveilSale</h5>
+                    <div class="light center hide-on-small-only">
+                        While you wait, please consider supporting UnveilSale by contributing to its development.
+                        All donations will go towards our development. Click the button below to learn more.
+                        Thank You for supporting UnveilSale!
+                    </div>
+                    <button style="margin-top: 12px;" class="btn-flat white-text backcolor-secondary-scheme center waves-effect waves-dark" type="submit">
+                        <a href="{% url 'donations' %}" target="_blank" class="white-text"> Donate </a>
+                    </button>
+                </div>
+            </div>
+        </div>
 
 		<div class="mainhomecontent">
 

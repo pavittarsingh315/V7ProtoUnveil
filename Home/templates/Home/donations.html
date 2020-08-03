@@ -32,14 +32,14 @@
                             <li>4.   Donation example: By entering 5 you are donating 5 USD.</li>
                             <li>5.   Please keep in mind that donations will not be refunded.</li>
                             </ul>">
-                                <i class="material-icons color-secondary-scheme">info</i>
+                                <a class="btn-flat white-text backcolor-secondary-scheme center">IMPORTANT!</a>
                             </span>
-                            <label for="amount">Amount: (Please hover above the "i" below to read disclaimers before you donate!)</label>
+                            <label for="amount">Amount: (Please read IMPORTANT! below)</label>
                         </div>
 
                         <div class="input-field col s6 m6 l6">
                             <i class="material-icons prefix color-primary-scheme">sentiment_very_satisfied</i>
-                            <input type="text" name="name" maxlength="50" required id="id_first_name">
+                            <input type="text" name="name" value="{{ user.first_name }} {{ user.last_name }}" maxlength="50" required id="id_first_name">
                             <span class="tooltipped helptext" data-position="top" data-tooltip="Enter Full Name">
                                 <i class="material-icons color-secondary-scheme">info</i>
                             </span>
@@ -49,7 +49,7 @@
 
                         <div class="input-field col s6 m6 l6">
                             <i class="material-icons prefix color-primary-scheme">email</i>
-                            <input type="email" name="email" required id="id_email">
+                            <input type="email" name="email" value="{{ user.email }}" required id="id_email">
                             <span class="tooltipped helptext" data-position="top" data-tooltip="Enter a valid Email Address">
                                 <i class="material-icons color-secondary-scheme">info</i>
                             </span>

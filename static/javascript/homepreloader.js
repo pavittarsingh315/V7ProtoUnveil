@@ -26,10 +26,6 @@ function homepreloader() {
         <div class="col s12 m3 l2"></div>
     </div>`;
 
-    document.getElementById("donations").innerHTML =
-    `<div class="row">
-        <div class="center container">Fuck You Faggit</div>
-    </div>`;
 
 
     document.querySelector('.mainhomecontent').style.display='none';
