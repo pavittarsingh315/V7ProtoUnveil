@@ -31,25 +31,10 @@
 
 
 {% block content %}
-		<div id='homepreloaderid' class="container">
+		<div id='homepreloaderid'>
         </div>
 
-		<div id="donations" class='donations container row'>
-            <div class="col m12 s12 l8 offset-l2">
-                <!-- Promo 2 -->
-                <div class="center card-panel z-depth-2 hoverable donation-card">
-                    <i class="large material-icons color-secondary-scheme">attach_money</i>
-                    <h5>Support UnveilSale</h5>
-                    <div class="light center hide-on-small-only">
-                        While you wait, please consider supporting UnveilSale by contributing to its development.
-                        All donations will go towards our development. Click the button below to learn more.
-                        Thank You for supporting UnveilSale!
-                    </div>
-                    <button style="margin-top: 12px;" class="btn-flat white-text backcolor-secondary-scheme center waves-effect waves-dark" type="submit">
-                        <a href="{% url 'donations' %}" target="_blank" class="white-text"> Donate </a>
-                    </button>
-                </div>
-            </div>
+		<div id="donations">
         </div>
 
 		<div class="mainhomecontent">
@@ -140,5 +125,56 @@
 {% endblock content %}
 
 {% block scripts %}
-	<script type="text/javascript" src="{% static 'javascript/homepreloader.js' %}"></script>
+	<script type="text/javascript">
+		function homepreloader() {
+			document.getElementById("homepreloaderid").innerHTML =
+			`<div class="container row">
+				<div class="col s12 m3 l2"></div>
+				<div class="col s12 m6 l8">
+					<h6 class="center container preloaderheader">Please wait while we gather your results</h6>
+					<h6 class="center container preloaderrightsnotice">
+						All rights of the product belong to the redirected seller.
+					</h6>
+					<div class="prodiv">
+						<div class="proind"></div>
+					</div>
+				</div>
+				<div class="col s12 m3 l2"></div>
+			</div>`;
+
+			document.getElementById("donations").innerHTML =
+			`<div class="donations container row">
+				<div class="col m12 s12 l8 offset-l2">
+					<!-- Promo 2 -->
+					<div class="center card-panel z-depth-2 hoverable donation-card">
+						<i class="large material-icons color-secondary-scheme">attach_money</i>
+						<h5>Support UnveilSale</h5>
+						<div class="light center hide-on-small-only">
+							While you wait, please consider supporting UnveilSale by contributing to its development.
+							All donations will go towards our development. Click the button below to learn more.
+							Thank You for supporting UnveilSale!
+						</div>
+						<button style="margin-top: 12px;" class="btn-flat white-text backcolor-secondary-scheme center waves-effect waves-dark" type="submit">
+							<a href="{% url 'donations' %}" target="_blank" class="white-text"> Donate </a>
+						</button>
+					</div>
+				</div>
+            </div>`;
+
+
+
+			document.querySelector('.mainhomecontent').style.display='none';
+			document.querySelector('.prodiv').classList.add('progress');
+			document.querySelector('.proind').classList.add('indeterminate');
+			document.querySelector('.preloaderheader').style.display='block';
+			document.getElementById('donations').style.display='block';
+			document.querySelector('.preloaderrightsnotice').style.display='block';
+			setTimeout(function(){ document.querySelector('.prodiv').classList.remove('progress');
+			document.querySelector('.proind').classList.remove('indeterminate');
+			document.querySelector('.mainhomecontent').style.display='block';
+			document.querySelector('.preloaderrightsnotice').style.display='none';
+			document.querySelector('.preloaderheader').style.display='none';
+			},30000);
+		}
+	</script>
 {% endblock scripts %}

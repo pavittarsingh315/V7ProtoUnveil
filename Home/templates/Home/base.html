@@ -54,6 +54,7 @@
                             <li><a class="waves-effect waves-dark modal-trigger btn-flat white-text backcolor-secondary-scheme" data-target="cart" title="Cart">Cart<i class="material-icons left" >shopping_cart</i><span class="badge white-text">0</span></a></li>
                             <li><a class="dropdown-trigger waves-effect waves-dark btn-flat white-text backcolor-secondary-scheme" data-target="dropdown1" title="Account"><i class="material-icons left">account_box</i>{{ user.username }}</a></li>
                         {% else %}
+                            <li><a class="waves-effect waves-dark modal-trigger btn-flat white-text backcolor-secondary-scheme" data-target="cart" title="Cart">Cart<i class="material-icons left" >shopping_cart</i><span class="badge white-text">0</span></a></li>
                             <li><a href="{% url 'loginpage' %}" class="btn-flat white-text backcolor-secondary-scheme">Login</a></li>
                             <li><a href="{% url 'registerpage' %}" class="btn-flat white-text backcolor-secondary-scheme">Register</a></li>
                             <li><a data-target="aboutmodal" class="btn-flat white-text backcolor-secondary-scheme modal-trigger">About</a></li>
@@ -66,6 +67,7 @@
                         <li><a href="#" class="white-text">Settings</a></li>
                         <li><a href="{% url 'bookmarks' %}" class="white-text">Bookmarks</a></li>
                         <li><a href="{% url 'donations' %}" class="white-text">Donate</a></li>
+                        <li><a href="#aboutmodal" class="white-text modal-trigger">About</a></li>
                         <li class="divider backcolor-secondary-scheme"></li>
                         <li><a href="{% url 'logoutpage' %}" class="white-text">Logout</a></li>
                     </ul>
@@ -85,7 +87,10 @@
                 <li class="divider"></li>
                 <li><a class="waves-effect waves-dark" href="{% url 'registerpage' %}">Register</a></li>
                 <li class="divider"></li>
-                <li><a class="waves-effect waves-dark modal-trigger" data-target="aboutmodal" ">About</a></li>
+                <li><a class="waves-effect waves-dark modal-trigger" data-target="aboutmodal">About</a></li>
+                <li class="divider"></li>
+                <li><a class="waves-effect waves-dark modal-trigger" href="#cart" title="Cart"><i class="material-icons">shopping_cart</i>Cart<span class="badge badge-sidenav">0</span></a></li>
+                <li class="divider"></li>
             {% endif %}
         </ul>
         {% if user.is_authenticated %}
@@ -94,54 +99,53 @@
                 <li><a href="#">Settings</a></li>
                 <li><a href="{% url 'bookmarks' %}">Bookmarks</a></li>
                 <li><a href="{% url 'donations' %}">Donate</a></li>
+                <li><a href="#aboutmodal" class="modal-trigger">About</a></li>
                 <li class="divider"></li>
                 <li><a href="{% url 'logoutpage' %}">Logout</a></li>
             </ul>
         {% endif %}
 
-		{% if user.is_authenticated %}
-            <!-- Cart Modal Structure -->
-            <div id="cart" class="modal modal-fixed-footer">
-                <div class="modal-content">
-                    <span class="header center"><h3 class="cart-total-price">Cart is empty</h3></span>
-                    <div class="collection cart-items">
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button class="btn-purchase waves-effect waves-light btn-flat backcolor-primary-scheme left"><b class="white-text">Clear Cart</b></button>
-                    <button class="modal-close waves-effect waves-dark btn-flat backcolor-secondary-scheme"><b class="white-text">Exit</b></button>
+        <!-- Cart Modal Structure -->
+        <div id="cart" class="modal modal-fixed-footer">
+            <div class="modal-content">
+                <span class="header center"><h3 class="cart-total-price">Cart is empty</h3></span>
+                <div class="collection cart-items">
                 </div>
             </div>
+            <div class="modal-footer">
+                <button class="btn-purchase waves-effect waves-light btn-flat backcolor-primary-scheme left"><b class="white-text">Clear Cart</b></button>
+                <button class="modal-close waves-effect waves-dark btn-flat backcolor-secondary-scheme"><b class="white-text">Exit</b></button>
+            </div>
+        </div>
 
-            {% block trending %}
-            {% endblock trending %}
-        {% else %}
-            <!-- About Modal Structure -->
-            <div id="aboutmodal" class="modal modal-fixed-footer">
-                <div class="modal-content">
-                    <h3 class="header center">About Us!</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-                      magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                      consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                      Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-                      magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                      consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                      Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-                      magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                      consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                      Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-                      magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                      consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                      Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
-                </div>
-                <div class="modal-footer">
-                    <a class="modal-close waves-effect waves-dark btn-flat backcolor-secondary-scheme"><b class="white-text">Exit</b></a>
-                </div>
+        {% block trending %}
+        {% endblock trending %}
+
+        <!-- About Modal Structure -->
+        <div id="aboutmodal" class="modal modal-fixed-footer">
+            <div class="modal-content">
+                <h3 class="header center">About Us!</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+                  magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                  consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                  Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+                  magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                  consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                  Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+                  magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                  consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                  Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+                  magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                  consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                  Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
             </div>
-        {% endif %}
+            <div class="modal-footer">
+                <a class="modal-close waves-effect waves-dark btn-flat backcolor-secondary-scheme"><b class="white-text">Exit</b></a>
+            </div>
+        </div>
 	</header>
 
 	<main>
@@ -164,7 +168,7 @@
 	            <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
 	          </div>
 	          <div class="col l4 offset-l2 s12">
-	            <h5 class="white-text">Our Social Media</h5>
+	            <h5 class="white-text">Contact Us</h5>
 	            <ul>
 	              <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
 	              <li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>

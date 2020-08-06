@@ -19,9 +19,7 @@ function ready() {
 		button.addEventListener('click', addToCartClicked)
 	}
 
-    if (user != 'AnonymousUser'){
-        document.getElementsByClassName('btn-purchase')[0].addEventListener('click', purchaseClicked);
-    }
+    document.getElementsByClassName('btn-purchase')[0].addEventListener('click', purchaseClicked);
 	displayCart();
 
 
@@ -33,13 +31,11 @@ function ready() {
 	}
 
 	// this allows the total from the session storage to be accessed in the cart modal
-	if (user != 'AnonymousUser'){
-        let total = sessionStorage.getItem('totalCost')
-        if(total) {
-            document.querySelector('.cart-total-price').textContent = 'Total: $' + total;
-        } else {
-            document.querySelector('.cart-total-price').textContent = 'Cart is Empty';
-        }
+    let total = sessionStorage.getItem('totalCost')
+    if(total) {
+        document.querySelector('.cart-total-price').textContent = 'Total: $' + total;
+    } else {
+        document.querySelector('.cart-total-price').textContent = 'Cart is Empty';
     }
 
 }
@@ -99,28 +95,24 @@ function removeCartItem(event) {
 
 
 function addToCartClicked(event) {
-    if (user === 'AnonymousUser'){
-        alert('Please Login or Register to access this feature')
-    } else {
-        var button = event.target
-        var shopItem = button.parentElement.parentElement.parentElement
-        var title = shopItem.getElementsByClassName('shop-item-title')[0].innerText
-        var price = shopItem.getElementsByClassName('shop-item-price')[0].innerText
-        var imageSrc = shopItem.getElementsByClassName('shop-item-image')[0].src
-        var itemLink = shopItem.getElementsByClassName('link-title')[0].href
+    var button = event.target
+    var shopItem = button.parentElement.parentElement.parentElement
+    var title = shopItem.getElementsByClassName('shop-item-title')[0].innerText
+    var price = shopItem.getElementsByClassName('shop-item-price')[0].innerText
+    var imageSrc = shopItem.getElementsByClassName('shop-item-image')[0].src
+    var itemLink = shopItem.getElementsByClassName('link-title')[0].href
 
 
-        /* i forgot what this is for so if theres a glitch uncomment this maybe itll fix it
-        let productNumbers = sessionStorage.getItem('itemNumbers');
-        if(productNumbers) {
-            document.querySelector('.badge').textContent = productNumbers;
-            document.querySelector('.badge-sidenav').textContent = productNumbers;
-        }*/
+    /* i forgot what this is for so if theres a glitch uncomment this maybe itll fix it
+    let productNumbers = sessionStorage.getItem('itemNumbers');
+    if(productNumbers) {
+        document.querySelector('.badge').textContent = productNumbers;
+        document.querySelector('.badge-sidenav').textContent = productNumbers;
+    }*/
 
 
-        addItemToCart(title, price, imageSrc, itemLink)
-        updateCartTotal()
-    }
+    addItemToCart(title, price, imageSrc, itemLink)
+    updateCartTotal()
 }
 
 
