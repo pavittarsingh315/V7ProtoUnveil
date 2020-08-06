@@ -32,12 +32,12 @@ main {
 /* this keeps all the cards on a consistent height it is good. */
 
 .card {
-	height: 375px;
+	height: 550px;
 	overflow: hidden;
 }
 
 .card-image {
-	height: 175px;
+	height: 350px;
 }
 
 

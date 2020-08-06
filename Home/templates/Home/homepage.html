@@ -2,13 +2,13 @@
 {% load static %}
 
 
-{% block modal %}
+{% block modalname %}
 	<li><a class="waves-effect waves-dark modal-trigger btn-flat white-text backcolor-secondary-scheme" data-target="trending" title="Trending">Trending<i class="material-icons left" >trending_up</i></a></li>
-{% endblock modal %}
-{% block sidemodal %}
+{% endblock modalname %}
+{% block sidemodalname %}
 	<li><a class="waves-effect waves-dark modal-trigger" href="#trending" title="Trending"><i class="material-icons" >trending_up</i>Trending</a></li>
-{% endblock sidemodal %}
-{% block trending %}
+{% endblock sidemodalname %}
+{% block modal %}
 	<!-- Trending Modal Structure -->
 	<div id="trending" class="modal modal-trending modal-fixed-footer">
 		<div class="modal-content">
@@ -27,7 +27,7 @@
 			<button class="modal-close waves-effect waves-dark btn-flat backcolor-secondary-scheme"><b class="white-text">Exit</b></button>
 		</div>
 	</div>
-{% endblock %}
+{% endblock modal %}
 
 
 {% block content %}

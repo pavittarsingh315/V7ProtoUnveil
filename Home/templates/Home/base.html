@@ -50,7 +50,7 @@
                     <a href="#" data-target="mobile-nav" class="sidenav-trigger"><i class="material-icons">menu</i></a>
                     <ul class="right hide-on-med-and-down">
                         {% if user.is_authenticated %}
-                            {% block modal %}{% endblock modal %}
+                            {% block modalname %}{% endblock modalname %}
                             <li><a class="waves-effect waves-dark modal-trigger btn-flat white-text backcolor-secondary-scheme" data-target="cart" title="Cart">Cart<i class="material-icons left" >shopping_cart</i><span class="badge white-text">0</span></a></li>
                             <li><a class="dropdown-trigger waves-effect waves-dark btn-flat white-text backcolor-secondary-scheme" data-target="dropdown1" title="Account"><i class="material-icons left">account_box</i>{{ user.username }}</a></li>
                         {% else %}
@@ -79,7 +79,7 @@
         <!-- This is the the stuff in the side nav bar -->
         <ul class="sidenav" id="mobile-nav">
             {% if user.is_authenticated %}
-                {% block sidemodal %}{% endblock sidemodal %}
+                {% block sidemodalname %}{% endblock sidemodalname %}
                 <li><a class="waves-effect waves-dark modal-trigger" href="#cart" title="Cart"><i class="material-icons">shopping_cart</i>Cart<span class="badge badge-sidenav">0</span></a></li>
                 <li><a class="dropdown-trigger" href="#!" data-target="dropdown2"><i class="material-icons">account_box</i>{{ user.username }}</a></li>
             {% else %}
@@ -118,8 +118,8 @@
             </div>
         </div>
 
-        {% block trending %}
-        {% endblock trending %}
+        {% block modal %}
+        {% endblock modal %}
 
         <!-- About Modal Structure -->
         <div id="aboutmodal" class="modal modal-fixed-footer">

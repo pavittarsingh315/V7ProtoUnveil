@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from .forms import UserRegisterForm
+from .forms import UserRegisterForm, UserUpdateForm, ProfileUpdateForm
 from Search.models import Search, User_Search
 
 # these are all the imports for user email verification
@@ -62,8 +62,24 @@ def profile(request):
     user = request.user
     recent_searches = User_Search.objects.filter(Search_User=user).order_by('-date_added')[:10]
 
+    if request.method == 'POST':
+        user_form = UserUpdateForm(request.POST, instance=request.user)
+        profile_form = ProfileUpdateForm(request.POST, request.FILES, instance=request.user.profile)
+
+        if user_form.is_valid() and profile_form.is_valid():
+            user_form.save()
+            profile_form.save()
+            messages.success(request, f'Action was successful!')
+            return redirect('profilepage')
+    else:
+        user_form = UserUpdateForm(request.POST, instance=request.user)
+        profile_form = ProfileUpdateForm(request.POST, request.FILES, instance=request.user.profile)
+
+
     context = {
         'recents': recent_searches,
+        'user_form': user_form,
+        'profile_form': profile_form,
     }
 
     return render(request, 'Users/profile.html', context)
