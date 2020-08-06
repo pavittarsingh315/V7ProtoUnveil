@@ -29,7 +29,7 @@ main {
 }
 
 
-/* this keeps all the cards on a consistent height it is good. */
+/* this keeps all the cards on a consistent height it is good.
 
 .card {
 	height: 550px;
@@ -39,7 +39,7 @@ main {
 .card-image {
 	height: 350px;
 }
-
+*/
 
 /* this limits the amount of characters in the title */
 
