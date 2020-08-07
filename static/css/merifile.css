@@ -43,13 +43,14 @@ main {
 
 /* this limits the amount of characters in the title */
 
+/*
 .card-title {
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
 	max-width: 300px;
 }
-
+*/
 
 /* Main Color Scheme*/
 

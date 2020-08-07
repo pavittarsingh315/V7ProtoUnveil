@@ -29,6 +29,23 @@ urlpatterns = [
     path('login/', unauthenticated_user(auth_views.LoginView.as_view(template_name='Users/login.html')), name='loginpage'),
     path('logout/', auth_views.LogoutView.as_view(template_name='Users/logout.html'), name='logoutpage'),
 
+
+    # Password Reset
+    path('reset-password/',
+         auth_views.PasswordResetView.as_view(template_name='Users/password_reset.html'),
+         name='password_reset'),
+    path('password-reset/done/',
+         auth_views.PasswordResetDoneView.as_view(template_name='users/password_reset_done.html'),
+         name='password_reset_done'),
+    path('password-reset-confirm/<uidb64>/<token>/',
+         auth_views.PasswordResetConfirmView.as_view(template_name='users/password_reset_confirm.html'),
+         name='password_reset_confirm'),
+    path('password-reset-complete/',
+         auth_views.PasswordResetCompleteView.as_view(template_name='users/password_reset_complete.html'),
+         name='password_reset_complete'),
+
+
+    # App urls
     path('', include('Home.urls')),
     path('users/', include('Users.urls')),
     path('search/', include('Search.urls'))
