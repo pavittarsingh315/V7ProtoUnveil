@@ -29,12 +29,12 @@
     <div class="row container">
         {% for bookmark in Bookmarks %}
             <div class="col s12 m6 l4 shop-item">
-                <div class="card hoverable">
-                    <div class="card-image waves-effect waves-block waves-light">
+                <div class="card hoverable" style="overflow: hidden; height: 550px;">
+                    <div class="card-image waves-effect waves-block waves-light" style="height: 350px;">
                         <img class="activator shop-item-image" src="{{ bookmark.product.Image }}">
                     </div>
                     <div class="card-content">
-                        <span class="shop-item-title card-title activator grey-text text-darken-4">{{ bookmark.product.Name }}</span>
+                        <span style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 300px;" class="shop-item-title card-title activator grey-text text-darken-4">{{ bookmark.product.Name }}</span>
                         <span class="shop-item-price">{{ bookmark.product.Price }}</span>
                         <button class="right btn-small btn-flat detail-card-tabs" style="background-color: #FE1520; font-size: 10px;"><b class="white-text">{{ bookmark.product.Seller }}</b></button>
                     </div>
@@ -47,12 +47,10 @@
                     </div>
                     <div class="card-reveal">
                         <a target="_blank" href="{{ bookmark.product.Link }}" class="center container link-title"></a>
-                        <ul class="collapsible expandable">
-                            <li>
-                                <div class="collapsible-header"><i class="material-icons">info_outline</i>Description</div>
-                                <div class="collapsible-body"><span>{{ bookmark.product.Description }}</span></div>
-                            </li>
-                        </ul>
+                        <div class="center"><div class="container card-title">Description</div></div>
+                        <div class="container divider"></div><br>
+                        <div class="center"><span>{{ bookmark.product.Description }}</span></div><br>
+
                         <div class="card-action">
                             <ul class="center">
                                 <li><a href="#!" class="btn-flat waves-effect waves-light detail-card-tabs backcolor-secondary-scheme"><b class="white-text card-title">Exit</b></a></li>
