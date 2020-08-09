@@ -66,78 +66,7 @@
 
 
 
-            <div class="row container">
-                {% for searchad in searchads %}
-                    <div class="col s12 m6 l4 shop-item">
-                        <div class="card hoverable shop-item" style="overflow: hidden; height: 550px;">
-                            <div class="card-image waves-effect waves-block waves-light" style="height: 350px;">
-                                <img class="activator shop-item-image" src="{{ searchad.Image }}">
-                            </div>
-                            <div class="card-content">
-                                <span style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 300px;" class="card-title activator grey-text text-darken-4">{{ searchad.Name }}</span>
-                                <span>${{ searchad.Price }}</span>
-                                <button class="right btn-small btn-flat detail-card-tabs backcolor-secondary-scheme" style="font-size: 10px;"><b class="white-text">{{ searchad.Seller }}</b></button>
-                            </div>
-                            <div class="card-action">
-                                <a href="{{ searchad.Link }}" target="_blank" class="btn-floating btn-large waves-effect waves-light backcolor-primary-scheme" title="Go to seller website"><i class="material-icons">input</i></a>
-                                <button class="btn-floating btn-large backcolor-secondary-scheme right"><b class="white-text">AD</b></button>
-                                <!--
-                                <button class="btn-floating btn-large right waves-effect waves-light backcolor-secondary-scheme" title="Bookmark" onclick="M.toast({html: 'Bookmarked', classes: 'rounded'})"><i class="material-icons">bookmark</i></button>
-                            -->
-                            </div>
-                            <div class="card-reveal">
-                                <ul class="collapsible expandable">
-                                    <li>
-                                    <div class="collapsible-header"><i class="material-icons">info_outline</i>Description</div>
-                                    <div class="collapsible-body"><span>{{ searchad.Description }}</span></div>
-                                    </li>
-                                    <li>
-                                </ul>
-                                <div class="card-action">
-                                    <ul class="center">
-                                        <li><a class="btn-flat waves-effect waves-light detail-card-tabs backcolor-primary-scheme"><b class="white-text card-title">Exit</b></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                {% endfor %}
-
-                {% for product in products %}
-                    <div class="col s12 m6 l4 shop-item">
-                        <div class="card hoverable">
-                            <div class="card-image waves-effect waves-block waves-light">
-                                <img class="activator shop-item-image" src="{{ product.Image }}">
-                            </div>
-                            <div class="card-content">
-                                <span style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 300px;"  class="shop-item-title card-title activator grey-text text-darken-4">{{ product.Name }}</span>
-                                <span class="shop-item-price">{{ product.Price }}</span>
-                                <button class="right btn-small btn-flat detail-card-tabs" style="background-color: #FE1520; font-size: 10px;"><b class="white-text">{{ product.Seller }}</b></button>
-                            </div>
-                            <div class="card-action">
-                                <button class="shop-item-button btn-floating btn-large waves-effect waves-light backcolor-primary-scheme" title="Add to Cart"><i class="material-icons">add_shopping_cart</i></button>
-
-
-                                <button data-product="{{ product.id }}" data-action="add" class="bookmark-btn btn-floating btn-large right waves-effect waves-light backcolor-secondary-scheme" title="Add Bookmark"><i class="material-icons">bookmark_outline</i></button>
-
-                            </div>
-                            <div class="card-reveal">
-                                <a target="_blank" href="{{ product.Link }}" class="center container link-title"></a>
-                                <ul class="collapsible expandable">
-                                    <li>
-                                        <div class="collapsible-header"><i class="material-icons">info_outline</i>Description</div>
-                                        <div class="collapsible-body"><span>{{ product.Description }}</span></div>
-                                    </li>
-                                </ul>
-                                <div class="card-action">
-                                    <ul class="center">
-                                        <li><button class="btn-flat waves-effect waves-light detail-card-tabs backcolor-secondary-scheme"><b class="white-text card-title">Exit</b></button></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                {% endfor %}
+            <div class="row container" id="loadedcontent">
             </div>
 
             {% if products.has_other_pages %}
@@ -167,5 +96,8 @@
 {% endblock content %}
 
 {% block scripts %}
-    <script type="text/javascript" src="{% static 'javascript/preloader.js' %}"></script>
+    <script type="text/javascript">
+        document.getElementById("loadedcontent").innerHTML =`{% for searchad in searchads %}<div class="col s12 m6 l4 shop-item"><div class="card hoverable shop-item" style="overflow: hidden; height: 550px;"><div class="card-image waves-effect waves-block waves-light" style="height: 350px;"><img class="activator shop-item-image" src="{{ searchad.Image }}"></div><div class="card-content"><span style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 300px;" class="card-title activator grey-text text-darken-4">{{ searchad.Name }}</span><span>$</span><span>{{ searchad.Price }}</span><button class="right btn-small btn-flat detail-card-tabs backcolor-secondary-scheme" style="font-size: 10px;"><b class="white-text">{{ searchad.Seller }}</b></button></div><div class="card-action"><a href="{{ searchad.Link }}" target="_blank" class="btn-floating btn-large waves-effect waves-light backcolor-primary-scheme" title="Go to seller website"><i class="material-icons">input</i></a><button class="btn-floating btn-large backcolor-secondary-scheme right"><b class="white-text">AD</b></button><!--<button class="btn-floating btn-large right waves-effect waves-light backcolor-secondary-scheme" title="Bookmark" onclick="M.toast({html: 'Bookmarked', classes: 'rounded'})"><i class="material-icons">bookmark</i></button>--></div><div class="card-reveal"><ul class="collapsible expandable"><li><div class="collapsible-header"><i class="material-icons">info_outline</i>Description</div><div class="collapsible-body"><span>{{ searchad.Description }}</span></div></li><li></ul><div class="card-action"><ul class="center"><li><a class="btn-flat waves-effect waves-light detail-card-tabs backcolor-primary-scheme"><b class="white-text card-title">Exit</b></a></li></ul></div></div></div></div>{% endfor %}{% for product in products %}<div class="col s12 m6 l4 shop-item"><div class="card hoverable" style="overflow: hidden; height: 550px;"><div class="card-image waves-effect waves-block waves-light" style="height: 350px;"><img class="activator shop-item-image" src="{{ product.Image }}"></div><div class="card-content"><span style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 300px;"  class="shop-item-title card-title activator grey-text text-darken-4">{{ product.Name }}</span><span class="shop-item-price">{{ product.Price }}</span><button class="right btn-small btn-flat detail-card-tabs" style="background-color: #FE1520; font-size: 10px;"><b class="white-text">{{ product.Seller }}</b></button></div><div class="card-action"><button class="shop-item-button btn-floating btn-large waves-effect waves-light backcolor-primary-scheme" title="Add to Cart"><i class="material-icons">add_shopping_cart</i></button><button data-product="{{ product.id }}" data-action="add" class="bookmark-btn btn-floating btn-large right waves-effect waves-light backcolor-secondary-scheme" title="Add Bookmark"><i class="material-icons">bookmark_outline</i></button></div><div class="card-reveal"><a target="_blank" href="{{ product.Link }}" class="center container link-title"></a><ul class="collapsible expandable"><li><div class="collapsible-header"><i class="material-icons">info_outline</i>Description</div><div class="collapsible-body"><span>{{ product.Description }}</span></div></li></ul><div class="card-action"><ul class="center"><li><button class="btn-flat waves-effect waves-light detail-card-tabs backcolor-secondary-scheme"><b class="white-text card-title">Exit</b></button></li></ul></div></div></div></div>{% endfor %}`;
+    </script>
+    <script src="{% static 'javascript/preloader.js' %}"></script>
 {% endblock scripts %}

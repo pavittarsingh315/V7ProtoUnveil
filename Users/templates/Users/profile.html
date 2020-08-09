@@ -1,19 +1,18 @@
 {% extends 'Home/base.html' %}
 
 {% block modal %}
-	<div class="center error-message">
-		{% if form.errors %}
-			{% for field in form %}
-				{% for error in field.errors %}
-					<div class="center" style="background-color: red; color: white"> {{ error }} </div>
-				{% endfor %}
-			{% endfor %}
-		{% endif %}
-	</div>
-	<div class="divider container"></div>
-
 	<div id="profilesettings" class="modal modal-fixed-footer">
 		<div class="modal-content">
+			<div class="center error-message">
+				{% if form.errors %}
+					{% for field in form %}
+						{% for error in field.errors %}
+							<div class="center" style="background-color: red; color: white"> {{ error }} </div>
+						{% endfor %}
+					{% endfor %}
+				{% endif %}
+			</div>
+			<div class="divider container"></div>
 			<span class="header center"><h3>Update Profile</h3></span>
 			<div class="section container center">
 				<div class="row">
