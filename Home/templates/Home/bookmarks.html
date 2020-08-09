@@ -47,10 +47,13 @@
                     </div>
                     <div class="card-reveal">
                         <a target="_blank" href="{{ bookmark.product.Link }}" class="center container link-title"></a>
-                        <div class="center"><div class="container card-title">Description</div></div>
-                        <div class="container divider"></div><br>
-                        <div class="center"><span>{{ bookmark.product.Description }}</span></div><br>
-
+                        <ul class="collapsible expandable">
+                            <li>
+                            <div class="collapsible-header"><i class="material-icons">info_outline</i>Description</div>
+                            <div class="collapsible-body"><span>{{ searchad.Description }}</span></div>
+                            </li>
+                            <li>
+                        </ul>
                         <div class="card-action">
                             <ul class="center">
                                 <li><a href="#!" class="btn-flat waves-effect waves-light detail-card-tabs backcolor-secondary-scheme"><b class="white-text card-title">Exit</b></a></li>

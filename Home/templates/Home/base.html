@@ -9,10 +9,10 @@
 
 
 <!--  if you wanna get rid of favicon just delete these 4 links and delete the favicon file in static/images  -->
-<!--    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'images/favicon_io/apple-touch-icon.png' %}">-->
-<!--    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'images/favicon_io/favicon-32x32.png' %}">-->
-<!--    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'images/favicon_io/favicon-16x16.png' %}">-->
-<!--    <link rel="manifest" href="{% static 'images/favicon_io/site.webmanifest' %}">-->
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'images/favicon_io/apple-touch-icon.png' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'images/favicon_io/favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'images/favicon_io/favicon-16x16.png' %}">
+    <link rel="manifest" href="{% static 'images/favicon_io/site.webmanifest' %}">
 
 
 	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -52,7 +52,7 @@
                         {% if user.is_authenticated %}
                             {% block modalname %}{% endblock modalname %}
                             <li><a class="waves-effect waves-dark modal-trigger btn-flat white-text backcolor-secondary-scheme" data-target="cart" title="Cart">Cart<i class="material-icons left" >shopping_cart</i><span class="badge white-text">0</span></a></li>
-                            <li><a class="dropdown-trigger waves-effect waves-dark btn-flat white-text backcolor-secondary-scheme" data-target="dropdown1" title="Account"><i class="material-icons left">account_box</i>{{ user.username }}</a></li>
+                            <li><a class="dropdown-trigger waves-effect waves-dark btn-flat white-text backcolor-secondary-scheme" data-target="userdropdown" title="Account"><i class="material-icons left">account_box</i>{{ user.username }}</a></li>
                         {% else %}
                             <li><a class="waves-effect waves-dark modal-trigger btn-flat white-text backcolor-secondary-scheme" data-target="cart" title="Cart">Cart<i class="material-icons left" >shopping_cart</i><span class="badge white-text">0</span></a></li>
                             <li><a href="{% url 'loginpage' %}" class="btn-flat white-text backcolor-secondary-scheme">Login</a></li>
@@ -62,9 +62,8 @@
                     </ul>
                 </div>
                 {% if user.is_authenticated %}
-                    <ul id="dropdown1" class="dropdown-content backcolor-primary-scheme">
+                    <ul id="userdropdown" class="dropdown-content backcolor-primary-scheme">
                         <li><a href="{% url 'profilepage' %}" class="white-text">Profile</a></li>
-                        <li><a href="#" class="white-text">Settings</a></li>
                         <li><a href="{% url 'bookmarks' %}" class="white-text">Bookmarks</a></li>
                         <li><a href="{% url 'donations' %}" class="white-text">Donate</a></li>
                         <li><a href="#aboutmodal" class="white-text modal-trigger">About</a></li>
@@ -81,7 +80,7 @@
             {% if user.is_authenticated %}
                 {% block sidemodalname %}{% endblock sidemodalname %}
                 <li><a class="waves-effect waves-dark modal-trigger" href="#cart" title="Cart"><i class="material-icons">shopping_cart</i>Cart<span class="badge badge-sidenav">0</span></a></li>
-                <li><a class="dropdown-trigger" href="#!" data-target="dropdown2"><i class="material-icons">account_box</i>{{ user.username }}</a></li>
+                <li><a class="dropdown-trigger" href="#!" data-target="userdropdown2"><i class="material-icons">account_box</i>{{ user.username }}</a></li>
             {% else %}
                 <li><a class="waves-effect waves-dark" href="{% url 'loginpage' %}">Login</a></li>
                 <li class="divider"></li>
@@ -94,9 +93,8 @@
             {% endif %}
         </ul>
         {% if user.is_authenticated %}
-            <ul id="dropdown2" class="dropdown-content">
+            <ul id="userdropdown2" class="dropdown-content">
                 <li><a href="{% url 'profilepage' %}" class="">Profile</a></li>
-                <li><a href="#">Settings</a></li>
                 <li><a href="{% url 'bookmarks' %}">Bookmarks</a></li>
                 <li><a href="{% url 'donations' %}">Donate</a></li>
                 <li><a href="#aboutmodal" class="modal-trigger">About</a></li>
@@ -125,18 +123,6 @@
         <div id="aboutmodal" class="modal modal-fixed-footer">
             <div class="modal-content">
                 <h3 class="header center">About Us!</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-                  magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                  consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                  Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-                  magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                  consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                  Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-                  magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                  consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                  Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
                   magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
                   consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
