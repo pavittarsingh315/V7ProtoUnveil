@@ -24,6 +24,7 @@ def search(request):
         CostCo(request)
         HomeDepot(request)
         SamsClub(request)
+        Macys(request)
 
         product_list = models.Product.objects.filter(Search=search).all().order_by('Name')
         # ads = Ad_models.SearchPageAds.objects.filter(Keywords=search).all()
