@@ -299,29 +299,31 @@ def Macys(request):
         soup = BeautifulSoup(r.content, 'lxml')
 
         productlinks = []
-        for item in soup.find_all('li', class_=['cell productThumbnailItem'])[:2]:
-            seller="Macy's"
-            name = item.find('a', class_=['productDescLink']).get('title')
-            pricecheck = item.find('div', class_=['prices'])
-            if pricecheck.find('span', class_=['discount']):
-                price = item.find('span', class_=['discount']).text[5:-11]
-            else:
-                price = pricecheck.find('span', class_=['regular']).text
-            if not models.Product.objects.filter(Name=name, Price=price, Seller=seller):
-                link = (base_url + item.find('a', class_=['productDescLink']).get('href'))
-                productlinks.append(link)
-                image = item.find('img', class_=['thumbnailImage']).get('src')
-                for link in productlinks:
-                    r = requests.get(link, headers=headers)
+        if soup.find('li', class_=['cell productThumbnailItem']):
+            for item in soup.find_all('li', class_=['cell productThumbnailItem'])[:2]:
+                if item.find('a', class_=['productDescLink']) and item.find('div', class_=['prices']):
+                    seller="Macy's"
+                    name = item.find('a', class_=['productDescLink']).get('title')
+                    pricecheck = item.find('div', class_=['prices'])
+                    if pricecheck.find('span', class_=['discount']):
+                        price = item.find('span', class_=['discount']).text[5:-11]
+                    else:
+                        price = pricecheck.find('span', class_=['regular']).text
+                    if not models.Product.objects.filter(Name=name, Price=price, Seller=seller):
+                        link = (base_url + item.find('a', class_=['productDescLink']).get('href'))
+                        productlinks.append(link)
+                        image = item.find('img', class_=['thumbnailImage']).get('src')
+                        for link in productlinks:
+                            r = requests.get(link, headers=headers)
 
-                    soup2 = BeautifulSoup(r.content, 'lxml')
+                            soup2 = BeautifulSoup(r.content, 'lxml')
 
-                    description = soup2.find_all('div', class_=['accordion-body'])[0].text
+                            description = soup2.find_all('div', class_=['accordion-body'])[0].text
 
-                if models.Product.objects.filter(Name=name, Link=link, Seller=seller):
-                    if not models.Product.objects.filter(Search=search, Name=name, Price=price, Description=description, Link=link, Image=image, Seller=seller):
-                        models.Product.objects.filter(Search=search, Name=name, Link=link).update(Search=search, Name=name, Price=price, Description=description, Link=link, Image=image, Seller=seller)
-                else:
-                    models.Product.objects.update_or_create(Search=search, Name=name, Price=price, Description=description, Link=link, Image=image, Seller=seller)
+                        if models.Product.objects.filter(Name=name, Link=link, Seller=seller):
+                            if not models.Product.objects.filter(Search=search, Name=name, Price=price, Description=description, Link=link, Image=image, Seller=seller):
+                                models.Product.objects.filter(Search=search, Name=name, Link=link).update(Search=search, Name=name, Price=price, Description=description, Link=link, Image=image, Seller=seller)
+                        else:
+                            models.Product.objects.update_or_create(Search=search, Name=name, Price=price, Description=description, Link=link, Image=image, Seller=seller)
 
 
