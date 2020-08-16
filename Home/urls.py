@@ -8,6 +8,6 @@ urlpatterns = [
     path('update_item/', views.UpdateItem, name='update_item'),
 
     path('donations/', views.donations, name="donations"),
-    path('charge/', views.charge, name="donationcharge"),
-    path('success/<str:args>/', views.successMsg, name="donationsuccess"),
+    path('donationdata/', views.donationcomplete, name="donationdata"),
+    path('donationsuccess/', views.successMsg, name="donationsuccessful"),
 ]

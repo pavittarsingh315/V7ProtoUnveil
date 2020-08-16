@@ -22,38 +22,25 @@ def home(request):
     return render(request, 'Home/homepage.html', context)
 
 
-import stripe
-from main.settings import STRIPE_API_KEY
-
 def donations(request):
     return render(request, 'Home/donations.html')
 
-stripe.api_key = STRIPE_API_KEY
 
-def charge(request):
-    if request.method == 'POST':
-        print('Data:', request.POST)
+def donationcomplete(request):
+    data = json.loads(request.body)
+    request.session['donation_data'] = data
+    return JsonResponse('Item was added!', safe=False)
 
-        amount = int(round(float(request.POST['amount'])))
 
-        customer = stripe.Customer.create(
-            email=request.POST['email'],
-            name=request.POST['name'],
-            source=request.POST['stripeToken'],
-        )
+def successMsg(request):
+    donation_data = request.session.get('donation_data')
+    context = {
+        'Amount': donation_data['Total'],
+        'Email': donation_data['Email'],
+        'Full_Name': donation_data['Full Name'],
+    }
+    return render(request, 'Home/donationsuccess.html', context)
 
-        charge = stripe.Charge.create(
-            customer=customer,
-            amount=amount*100,
-            currency='usd',
-            description='Donation'
-        )
-
-    return redirect(reverse('donationsuccess', args=[amount]))
-
-def successMsg(request, args):
-    amount = args
-    return render(request, 'Home/donationsuccess.html', {'amount': amount})
 
 
 def UpdateItem(request):

@@ -2,26 +2,23 @@
 {% load static %}
 
 {% block header %}
-    <link rel="stylesheet" type="text/css" href="{% static 'css/stripe.css' %}">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 {% endblock header %}
 
 {% block content %}
-
-    <script src="https://js.stripe.com/v3/"></script>
-
-
+    <br><h4 class="center container donation-display"></h4>
     <section class="section container center">
         <div class="row">
             <div class="col s12 l10 m12 offset-l1">
                 <div class="card-panel">
-                    <script src="https://js.stripe.com/v3/"></script>
+<!--                    <script src="https://js.stripe.com/v3/"></script>-->
 
-                    <form action="{% url 'donationcharge' %}" method="post" id="payment-form">
+                    <form method="post">
                         {% csrf_token %}
 
                         <div class="input-field">
                             <i class="material-icons prefix color-primary-scheme">attach_money</i>
-                            <input type="text" name="amount" required id="amount">
+                            <input type="text" name="amount" required id="amount" class="donation-amount">
                             <span class="tooltipped helptext" data-position="top" data-tooltip="
                             <ul>
                             <li>1.   Enter the amount you would like to donate.</li>
@@ -56,30 +53,91 @@
                             <label for="id_email">Email:</label>
                         </div>
 
-
-                        <div class="form-row">
-                            <label for="card-element">
-                            Credit or debit card
-                            </label>
-                            <div id="card-element">
-                            <!-- A Stripe Element will be inserted here. -->
-                            </div>
-
-                            <!-- Used to display form errors. -->
-                            <div id="card-errors" role="alert"></div>
-                        </div>
-
                         <br>
 
-                        <button class="btn-flat white-text backcolor-secondary-scheme center waves-effect waves-dark" type="submit">Donate</button>
+                        <!-- Set up a container element for the button -->
+                        <div class="center" id="paypal-button-container"></div>
+
                     </form>
                 </div>
             </div>
         </div>
     </section>
 
-{% endblock content %}
 
-{% block scripts %}
-    <script type="text/javascript" src="{% static 'javascript/stripe.js' %}"></script>
-{% endblock scripts %}
+    <!-- Include the PayPal JavaScript SDK -->
+    <script src="https://www.paypal.com/sdk/js?client-id=AVumWUAy6aBOrHICecV5aAOoUvTfMOb5xVu98JmGN24mCDkb2-Ao1cH4vcH0uhJ4YCczSniKTkTbVq0n&currency=USD&disable-funding=credit"></script>
+
+    <script>
+        var inputBox = document.querySelector('.donation-amount');
+        var total = ""
+        inputBox.onkeyup = function(){
+            document.querySelector('.donation-display').innerHTML = + inputBox.value;
+            total = document.querySelector('.donation-display').innerHTML;
+            console.log(total)
+            if (total === "Donation Amount: ") {
+                document.querySelector('.donation-display').innerHTML = ""
+            }
+        }
+
+        function donationComplete(){
+            var url = '{% url 'donationdata' %}'
+            var fullName = document.getElementById('id_first_name').value
+            var email = document.getElementById('id_email').value
+
+            fetch(url, {
+                method:'POST',
+                headers:{
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': csrftoken,
+                },
+                body:JSON.stringify({'Full Name': fullName, 'Email': email, 'Total': total})
+            })
+
+            .then((response) =>{
+                return response.json()
+            })
+        }
+
+
+
+        // Render the PayPal button into #paypal-button-container
+        paypal.Buttons({
+
+            style: {
+                color: 'gold',
+                shape: 'pill',
+                label: 'pay',
+                size: 'responsive',
+            },
+
+
+            // Set up the transaction
+            createOrder: function(data, actions, donation) {
+                return actions.order.create({
+                    purchase_units: [{
+                        amount: {
+                            value: total
+                        }
+                    }]
+                });
+            },
+
+            // Finalize the transaction
+            onApprove: function(data, actions) {
+                return actions.order.capture().then(function(details) {
+                    // Show a success message to the buyer
+                    donationComplete()
+                    alert('Transaction completed by ' + details.payer.name.given_name + '!');
+                    location.href="{% url 'donationsuccessful' %}"
+                });
+            }
+
+
+        }).render('#paypal-button-container');
+    </script>
+
+{% endblock content %}
+<!--{% block scripts %}-->
+<!--    <script type="text/javascript" src="{% static 'javascript/stripe.js' %}"></script>-->
+<!--{% endblock scripts %}-->

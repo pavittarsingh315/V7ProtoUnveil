@@ -4,9 +4,9 @@
 {% block content %}
     <div class="center container ">
         <img height="580" width="387" src="{% static 'images/successdog2.jpg' %}">
-        <h4>Thank you {{ user.first_name }} {{ user.last_name }} for contributing ${{amount}} to UnveilSale!</h4>
+        <h4>Thank you {{ Full_Name }} for contributing ${{ Amount }} to UnveilSale!</h4>
         <p>For contributing to the further development of UnveilSale, we sincerely thank you!
-            An email has also been sent containing details of your contribution!</p>
+            An email has also been sent to {{ Email }} containing details of your contribution!</p>
         <hr>
         <a class="btn-flat white-text backcolor-secondary-scheme center waves-effect waves-dark" href="{% url 'homepage' %}">Homepage</a>
     </div>
