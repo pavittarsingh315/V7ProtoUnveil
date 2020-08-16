@@ -7,6 +7,9 @@ from .filters import BookmarkFilter
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from Advertisements import models as Ad_models
 from Search import models as Search_models
+from django.core.mail import EmailMessage
+from main import settings
+from django.template.loader import render_to_string
 
 
 def Error_404_custom(request, exception):
@@ -39,6 +42,16 @@ def successMsg(request):
         'Email': donation_data['Email'],
         'Full_Name': donation_data['Full Name'],
     }
+    template = render_to_string('Home/donation_email.html', context)
+    email = EmailMessage(
+        'Thank You For Donating To UnveilSale!',
+        template,
+        settings.EMAIL_HOST_USER,
+        [donation_data['Email']]
+    )
+
+    email.fail_silently = False
+    email.send()
     return render(request, 'Home/donationsuccess.html', context)
 
 

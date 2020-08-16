@@ -6,7 +6,10 @@
 {% endblock header %}
 
 {% block content %}
-    <br><h4 class="center container donation-display"></h4>
+    <br>
+    <div>
+        <h4 class="center container donation-display-title"></h4><h4 class="center container donation-display"></h4>
+    </div>
     <section class="section container center">
         <div class="row">
             <div class="col s12 l10 m12 offset-l1">
@@ -21,13 +24,13 @@
                             <input type="text" name="amount" required id="amount" class="donation-amount">
                             <span class="tooltipped helptext" data-position="top" data-tooltip="
                             <ul>
-                            <li>1.   Enter the amount you would like to donate.</li>
-                            <li>2.   We only accept whole number donations at the moment!</li>
-                            <li>3.   Any decimal donation made will be round up or down accordingly.</li>
-                            <li>4.49 will be rounded to 4.</li>
-                            <li>4.51 will be rounded to 5.</li>
-                            <li>4.   Donation example: By entering 5 you are donating 5 USD.</li>
-                            <li>5.   Please keep in mind that donations will not be refunded.</li>
+                            <li>1. All donations are handled by PayPal.</li>
+                            <li>2. Your Card information is not stored on our server!</li>
+                            <li>3.   Enter the amount you would like to donate.</li>
+                            <li>4.   Please keep in mind that donations will not be refunded.</li><br>
+                            <li>Donation examples:</li>
+                            <li>By entering 4.20, you're donation 4.20 USD</li>
+                            <li>By entering 6.90, you're donation 6.90 USD</li>
                             </ul>">
                                 <a class="btn-flat white-text backcolor-secondary-scheme center">IMPORTANT!</a>
                             </span>
@@ -73,8 +76,8 @@
         var total = ""
         inputBox.onkeyup = function(){
             document.querySelector('.donation-display').innerHTML = + inputBox.value;
+            document.querySelector('.donation-display-title').innerHTML = "Donation Amount: ";
             total = document.querySelector('.donation-display').innerHTML;
-            console.log(total)
             if (total === "Donation Amount: ") {
                 document.querySelector('.donation-display').innerHTML = ""
             }
